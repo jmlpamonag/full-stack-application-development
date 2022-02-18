@@ -1,0 +1,6 @@
+# intellij, rubymine, pycharm, android studio, and webstorm general
+/.idea/
+*.iws
+
+# intellij-specific
+/out/
