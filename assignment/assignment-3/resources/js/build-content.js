@@ -209,3 +209,13 @@ const animals = [
 		"contactZip"            :   "41017"
 	}
 ];
+
+function buildIndex() {
+	let parent = $('#index-parent');
+
+	for (let i = 0; i < animals.length; i++) {
+		let animal = animals[i];
+
+		parent.append(animal.animalName + '<br>');
+	}
+}
