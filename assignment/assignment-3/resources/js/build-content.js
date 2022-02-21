@@ -221,7 +221,7 @@ function buildIndex() {
 	for (let i = 0; i < animals.length; i++) {
 		let animal = animals[i];
 
-		parent.append(buildIndexCardElement(animal));
+		parent.append(buildIndexCardElement(animal, i));
 	}
 }
 
@@ -229,18 +229,20 @@ function buildIndex() {
  * Build a Bootstrap 'card' element to be appended to the parent container in the index document.
  *
  * @param animal	the object from the dataset to retrieve data from.
+ * @param index		the index of the animal object from the dataset.
  *
  * @returns {HTMLDivElement}	a Bootstrap 'card' element for the index document.
  */
-function buildIndexCardElement(animal) {
+function buildIndexCardElement(animal, index) {
 	let col = buildColElement();
 	let card = buildCardElement();
 	let image = buildCardImageElement(animal.animalImages[0], animal.animalName);
 	let body = buildCardBodyElement();
 	let title = buildCardTitleHeading(animal.animalName);
 	let subtitle = buildCardSubtitleHeading(animal.sex + ', ' + animal.breed);
+	let button = buildCardButtonElement('Learn More', 'detail.html?index=' + index);
 
-	body.append(title, subtitle);
+	body.append(title, subtitle, button);
 	card.append(image, body);
 	col.append(card);
 
@@ -334,4 +336,22 @@ function buildCardSubtitleHeading(value) {
 	subtitle.innerText = value;
 
 	return subtitle;
+}
+
+/**
+ * Build a full-width Bootstrap 'btn' button to be appended to a Bootstrap 'card-body' element.
+ *
+ * @param value		the inner text value of the button.
+ * @param href		the URL that the button should link to when clicked.
+ *
+ * @returns {HTMLAnchorElement}		a Bootstrap 'btn' button.
+ */
+function buildCardButtonElement(value, href) {
+	let button = document.createElement('a');
+
+	button.setAttribute('class', 'btn btn-primary col-12 mt-auto');
+	button.setAttribute('href', href);
+	button.innerText = value;
+
+	return button;
 }
