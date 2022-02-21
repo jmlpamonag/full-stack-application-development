@@ -236,8 +236,12 @@ function buildIndexCardElement(animal) {
 	let col = buildColElement();
 	let card = buildCardElement();
 	let image = buildCardImageElement(animal.animalImages[0], animal.animalName);
+	let body = buildCardBodyElement();
+	let title = buildCardTitleHeading(animal.animalName);
+	let subtitle = buildCardSubtitleHeading(animal.sex + ', ' + animal.breed);
 
-	card.append(image);
+	body.append(title, subtitle);
+	card.append(image, body);
 	col.append(card);
 
 	return col;
@@ -285,4 +289,49 @@ function buildCardImageElement(src, alt) {
 	img.setAttribute('alt', alt);
 
 	return img;
+}
+
+/**
+ * Build a Bootstrap 'card-body' element to be appended to a Bootstrap 'card' element.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card-body' element.
+ */
+function buildCardBodyElement() {
+	let body = document.createElement('div');
+
+	body.setAttribute('class', 'card-body');
+
+	return body;
+}
+
+/**
+ * Build a Bootstrap 'card-title' heading to be appended to a Bootstrap 'card-body' element.
+ *
+ * @param value		the inner text value of the heading.
+ *
+ * @returns {HTMLHeadingElement}	a Bootstrap 'card-title' heading.
+ */
+function buildCardTitleHeading(value) {
+	let title = document.createElement('h5');
+
+	title.setAttribute('class', 'card-title');
+	title.innerText = value;
+
+	return title;
+}
+
+/**
+ * Build a Bootstrap 'card-subtitle' heading to be appended to a Bootstrap 'card-body' element.
+ *
+ * @param value		the inner text value of the heading.
+ *
+ * @returns {HTMLHeadingElement}	a Bootstrap 'card-subtitle' heading.
+ */
+function buildCardSubtitleHeading(value) {
+	let subtitle = document.createElement('h6');
+
+	subtitle.setAttribute('class', 'card-subtitle text-muted mb-1');
+	subtitle.innerText = value;
+
+	return subtitle;
 }
