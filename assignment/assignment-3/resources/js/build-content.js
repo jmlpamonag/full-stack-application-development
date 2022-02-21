@@ -210,12 +210,79 @@ const animals = [
 	}
 ];
 
+/**
+ * Build the index content - dynamically generated Bootstrap card elements containing animal information and a link to
+ * the details page pertaining that animal - and append it to the index document. Note: this function is to be called
+ * independently in the index document to invoke this function on page load.
+ */
 function buildIndex() {
 	let parent = $('#index-parent');
 
 	for (let i = 0; i < animals.length; i++) {
 		let animal = animals[i];
 
-		parent.append(animal.animalName + '<br>');
+		parent.append(buildIndexCardElement(animal));
 	}
+}
+
+/**
+ * Build a Bootstrap 'card' element to be appended to the parent container in the index document.
+ *
+ * @param animal	the object from the dataset to retrieve data from.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element for the index document.
+ */
+function buildIndexCardElement(animal) {
+	let col = buildColElement();
+	let card = buildCardElement();
+	let image = buildCardImageElement(animal.animalImages[0], animal.animalName);
+
+	card.append(image);
+	col.append(card);
+
+	return col;
+}
+
+/**
+ * Build a flexible Bootstrap column ('col') container element.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'col' element.
+ */
+function buildColElement() {
+	let col = document.createElement('div');
+
+	col.setAttribute('class', 'col');
+
+	return col;
+}
+
+/**
+ * Build a flexible Bootstrap 'card' container element.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element.
+ */
+function buildCardElement() {
+	let card = document.createElement('div');
+
+	card.setAttribute('class', 'card h-100');
+
+	return card;
+}
+
+/**
+ * Build an img element to be appended to the top of a Bootstrap 'card' element.
+ *
+ * @param src	a path to the source image.
+ * @param alt	an alternative text for the image that is displayed if the image cannot be.
+ *
+ * @returns {HTMLImageElement}	an img element to be appended to the top of a Bootstrap 'card' element.
+ */
+function buildCardImageElement(src, alt) {
+	let img = document.createElement('img');
+
+	img.setAttribute('class', 'card-img-top');
+	img.setAttribute('src', src);
+	img.setAttribute('alt', alt);
+
+	return img;
 }
