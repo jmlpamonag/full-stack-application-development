@@ -240,9 +240,10 @@ function buildIndexCardElement(animal, index) {
 	let body = buildCardBodyElement();
 	let title = buildCardTitleHeading(animal.animalName);
 	let subtitle = buildCardSubtitleHeading(animal.sex + ', ' + animal.breed);
+	let text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${animal.breed}, ${animal.age} in age, and ${animal.color} in color.`);
 	let button = buildCardButtonElement('Learn More', 'detail.html?index=' + index);
 
-	body.append(title, subtitle, button);
+	body.append(title, subtitle, text, button);
 	card.append(image, body);
 	col.append(card);
 
@@ -336,6 +337,22 @@ function buildCardSubtitleHeading(value) {
 	subtitle.innerText = value;
 
 	return subtitle;
+}
+
+/**
+ * Build a Bootstrap 'card-text' element to be appended to a Bootstrap 'card-body' element.
+ *
+ * @param value		the inner text value of the element.
+ *
+ * @returns {HTMLParagraphElement}	a Bootstrap 'card-text' element.
+ */
+function buildCardTextElement(value) {
+	let text = document.createElement('p');
+
+	text.setAttribute('class', 'card-text');
+	text.innerText = value;
+
+	return text;
 }
 
 /**
