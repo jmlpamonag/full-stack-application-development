@@ -6,7 +6,8 @@
 const animals = [
 	{
 		"animalName"            :   "Benny",
-		"animalImages"          :   [ 'https://via.placeholder.com/1500x750', 'https://via.placeholder.com/1500x750', 'https://via.placeholder.com/1500x750' ],
+		/* images courtesy of Joshua Dixon on Unsplash (https://unsplash.com/@joshdixon00) */
+		"animalImages"          :   [ 'https://i.imgur.com/w1aMeLB.jpg', 'https://i.imgur.com/oG0IUhv.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "Australian Shepherd Cross",
 		"secondBreed"           :   "",
@@ -39,7 +40,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Cornelia",
-		"animalImages"          :   [ 'https://via.placeholder.com/1500x750', 'https://via.placeholder.com/1500x750' ],
+		/* images courtesy of Vidhey PV on Unsplash (https://unsplash.com/@pv2k) */
+		"animalImages"          :   [ 'https://i.imgur.com/aBxzNf8.jpg', 'https://i.imgur.com/a9dE6Uh.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "Boxer Cross",
 		"secondBreed"           :   "",
@@ -76,7 +78,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Hemingway",
-		"animalImages"          :   [ 'https://via.placeholder.com/1500x750','https://via.placeholder.com/1500x750','https://via.placeholder.com/1500x750','https://via.placeholder.com/1500x750' ],
+		/* images courtesy of Milada Vigerova on Unsplash (https://unsplash.com/@milada_vigerova) */
+		"animalImages"          :   [ 'https://i.imgur.com/HoJOoxu.jpg','https://i.imgur.com/qCibVNc.jpg','https://i.imgur.com/LPVqCQw.jpg' ],
 		"type"                  :   "Cat",
 		"breed"                 :   "Domestic Short Hair Cross",
 		"size"                  :   "Large",
@@ -109,7 +112,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Howard",
-		"animalImages"          :   [ 'https://via.placeholder.com/1500x750','https://via.placeholder.com/1500x750','https://via.placeholder.com/1500x750' ],
+		/* images courtesy of Seven Song on Unsplash (https://unsplash.com/@sevenbenzema) */
+		"animalImages"          :   [ 'https://i.imgur.com/Ftgm2mU.jpg', 'https://i.imgur.com/TvYNOqT.jpg', 'https://i.imgur.com/EkpNJDu.jpg' ],
 		"type"                  :   "Cat",
 		"breed"                 :   "Domestic Short Hair Cross",
 		"size"                  :   "Large",
@@ -142,7 +146,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Niko",
-		"animalImages"          :   [  ],
+		/* images courtesy of Krystal Ng on Unsplash (https://unsplash.com/@bykrystal) */
+		"animalImages"          :   [ 'https://i.imgur.com/tz2ifSh.jpg', 'https://i.imgur.com/W3f2r8w.jpg' ],
 		"type"                  :   "Kitten",
 		"breed"                 :   "Domestic Longhair Cross",
 		"size"                  :   "Large",
@@ -175,7 +180,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Wishbone",
-		"animalImages"          :   [ 'https://via.placeholder.com/1500x750' ],
+		/* image courtesy of Mike Burke on Unsplash (https://unsplash.com/@themikeburke) */
+		"animalImages"          :   [ 'https://i.imgur.com/t6Ls5xE.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "American Bulldog Cross",
 		"size"                  :   "Large",
