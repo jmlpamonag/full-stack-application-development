@@ -301,14 +301,14 @@ function buildCardImageElement(src, alt) {
 }
 
 /**
- * Build a Bootstrap 'card-body' element to be appended to a Bootstrap 'card' element.
+ * Build a flexible Bootstrap 'card-body' element to be appended to a Bootstrap 'card' element.
  *
  * @returns {HTMLDivElement}	a Bootstrap 'card-body' element.
  */
 function buildCardBodyElement() {
 	let body = document.createElement('div');
 
-	body.setAttribute('class', 'card-body');
+	body.setAttribute('class', 'card-body d-flex flex-column');
 
 	return body;
 }
