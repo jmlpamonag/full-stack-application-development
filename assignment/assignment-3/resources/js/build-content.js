@@ -232,7 +232,16 @@ const attributeDescription = {
 	wormingFalse: 'I do NOT have an up-to-date record of worming.',
 
 	microchipTrue: 'I have a microchip and can be found in the database.',
-	microchipFalse: 'I do NOT have a microchip.'
+	microchipFalse: 'I do NOT have a microchip.',
+
+	suitableChildrenTrue: 'I do well with children around.',
+	suitableChildrenFalse: 'I prefer not to have children around.',
+
+	suitableDogTrue: 'I do well with other dogs around.',
+	suitableDogFalse: 'I prefer not to have other dogs around.',
+
+	suitableCatTrue: 'I do well with other cats around.',
+	suitableCatFalse: 'I prefer not to have other cats around.'
 }
 
 /**
