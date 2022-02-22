@@ -301,9 +301,9 @@ function buildDetail(index) {
 	healthGrid.append(buildHealthAttributeElement('microchip', animal.microchipped));
 
 	let suitabilityGrid = document.getElementById('attribute-accordion-suitability-grid');
-	/* TODO: children? */
-	/* TODO: dogs? */
-	/* TODO: cats? */
+	suitabilityGrid.append(buildSuitabilityAttributeElement('children', animal.isSuitableWithChildren));
+	suitabilityGrid.append(buildSuitabilityAttributeElement('dog', animal.isOkWithDogs));
+	suitabilityGrid.append(buildSuitabilityAttributeElement('cat', animal.likeCats));
 
 	let behaviorGrid = document.getElementById('attribute-accordion-behavior-grid');
 	/* TODO: laid back? */
@@ -643,6 +643,46 @@ function buildHealthAttributeElement(attribute, value) {
 			value === true ?
 				element = buildAccordionAttributeElement('Microchip', attributeDescription.microchipTrue, 'check-circle-fill', 'success') :
 				element = buildAccordionAttributeElement('Microchip', attributeDescription.microchipFalse, 'x-circle-fill', 'danger'); break;
+	}
+
+	return element;
+}
+
+/**
+ * Build a Bootstrap 'card' element to be appended to the attribute accordion suitability grid within the detail
+ * document.
+ *
+ * @param attribute		the name of the attribute for use in the switch statement; e.g., 'children', 'dog', or 'cat'.
+ * @param value			the value - true or false - of the data attribute.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element to be appended to the attribute accordion suitability grid.
+ */
+function buildSuitabilityAttributeElement(attribute, value) {
+	let element;
+
+	/* if the attribute value is null, meaning no value was assigned, build an empty element with 'display: none' */
+	if (value === null) {
+		element = document.createElement('div');
+		element.setAttribute('style', 'display: none');
+
+		return element;
+	}
+
+	switch (attribute) {
+		case 'children':
+			value === true ?
+				element = buildAccordionAttributeElement('Children', attributeDescription.suitableChildrenTrue, 'heart-half', 'primary') :
+				element = buildAccordionAttributeElement('Children', attributeDescription.suitableChildrenFalse, 'heart-fill', 'warning'); break;
+
+		case 'dog':
+			value === true ?
+				element = buildAccordionAttributeElement('Dogs', attributeDescription.suitableDogTrue, 'heart-half', 'primary') :
+				element = buildAccordionAttributeElement('Dogs', attributeDescription.suitableDogFalse, 'heart-fill', 'warning'); break;
+
+		case 'cat':
+			value === true ?
+				element = buildAccordionAttributeElement('Cats', attributeDescription.suitableCatTrue, 'heart-half', 'primary') :
+				element = buildAccordionAttributeElement('Cats', attributeDescription.suitableCatFalse, 'heart-fill', 'warning'); break;
 	}
 
 	return element;
