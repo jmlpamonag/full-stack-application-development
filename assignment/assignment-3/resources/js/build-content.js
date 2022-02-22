@@ -286,10 +286,10 @@ function buildDetail(index) {
 	/* TODO: size */
 
 	let healthGrid = document.getElementById('attribute-accordion-health-grid');
-	/* TODO: health check */
-	/* TODO: vaccinations */
-	/* TODO: worming */
-	/* TODO: microchip with link */
+	healthGrid.append(buildHealthAttributeElement('health-check', animal.healthCheck));
+	healthGrid.append(buildHealthAttributeElement('vaccination', animal.upToDateVaccinations));
+	healthGrid.append(buildHealthAttributeElement('worming', animal.upToDateWorming));
+	healthGrid.append(buildHealthAttributeElement('microchip', animal.microchipped));
 
 	let suitabilityGrid = document.getElementById('attribute-accordion-suitability-grid');
 	/* TODO: children? */
@@ -600,6 +600,43 @@ function buildAccordionAttributeElement(attribute, description, icon, color) {
 	col.append(card);
 
 	return col;
+}
+
+/**
+ * Build a Bootstrap 'card' element to be appended to the attribute accordion health grid within the detail document.
+ *
+ * @param attribute		the name of the attribute to use in the switch statement; e.g., 'health-check', 'vaccination',
+ * 						'worming', or 'microchip'.
+ * @param value			the value - true or false - of the data attribute.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element to be appended to the attribute accordion health grid.
+ */
+function buildHealthAttributeElement(attribute, value) {
+	let element;
+
+	switch (attribute) {
+		case 'health-check':
+			value === true ?
+				element = buildAccordionAttributeElement('Health Check', attributeDescription.healthCheckTrue, 'check-circle-fill', 'success') :
+				element = buildAccordionAttributeElement('Health Check', attributeDescription.healthCheckFalse, 'x-circle-fill', 'danger'); break;
+
+		case 'vaccination':
+			value === true ?
+				element = buildAccordionAttributeElement('Vaccination', attributeDescription.vaccinationTrue, 'check-circle-fill', 'success') :
+				element = buildAccordionAttributeElement('Vaccination', attributeDescription.vaccinationFalse, 'x-circle-fill', 'danger'); break;
+
+		case 'worming':
+			value === true ?
+				element = buildAccordionAttributeElement('Worming', attributeDescription.wormingTrue, 'check-circle-fill', 'success') :
+				element = buildAccordionAttributeElement('Worming', attributeDescription.wormingFalse, 'x-circle-fill', 'danger'); break;
+
+		case 'microchip':
+			value === true ?
+				element = buildAccordionAttributeElement('Microchip', attributeDescription.microchipTrue, 'check-circle-fill', 'success') :
+				element = buildAccordionAttributeElement('Microchip', attributeDescription.microchipFalse, 'x-circle-fill', 'danger'); break;
+	}
+
+	return element;
 }
 
 /**
