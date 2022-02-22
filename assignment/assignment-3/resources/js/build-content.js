@@ -217,6 +217,25 @@ const animals = [
 ];
 
 /**
+ * A local database of constant attribute description values from which the attribute elements will be built.
+ *
+ * @author Michael Muzzarelli
+ */
+const attributeDescription = {
+	healthCheckTrue: 'I have had a complete health check.',
+	healthCheckFalse: 'I have NOT had a health check.',
+
+	vaccinationTrue: 'I have an up-to-date vaccination record.',
+	vaccinationFalse: 'I do NOT have an up-to-date vaccination record.',
+
+	wormingTrue: 'I have an up-to-date record of worming.',
+	wormingFalse: 'I do NOT have an up-to-date record of worming.',
+
+	microchipTrue: 'I have a microchip and can be found in the database.',
+	microchipFalse: 'I do NOT have a microchip.'
+}
+
+/**
  * Build the index content - dynamically generated Bootstrap card elements containing animal information and a link to
  * the details page pertaining that animal - and append it to the index document. Note: this function is to be called
  * independently in the index document to invoke this function on page load.
@@ -254,6 +273,8 @@ function buildDetail(index) {
 		paragraph.innerText = value.toString();
 		aboutDescription.append(paragraph);
 	});
+
+	console.log(attributeDescription.healthCheckTrue);
 
 	let generalGrid = document.getElementById('attribute-accordion-general-grid');
 	/* TODO: breed and second breed */
