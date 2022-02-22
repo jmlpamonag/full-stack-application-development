@@ -254,6 +254,37 @@ function buildDetail(index) {
 		paragraph.innerText = value.toString();
 		aboutDescription.append(paragraph);
 	});
+
+	let generalGrid = document.getElementById('attribute-accordion-general-grid');
+	/* TODO: breed and second breed */
+	/* TODO: sex */
+	/* TODO: color */
+	/* TODO: if cat, declawed */
+	/* TODO: spayed or neutered depending on sex */
+	/* TODO: age */
+	/* TODO: size */
+
+	let healthGrid = document.getElementById('attribute-accordion-health-grid');
+	/* TODO: health check */
+	/* TODO: vaccinations */
+	/* TODO: worming */
+	/* TODO: microchip with link */
+
+	let suitabilityGrid = document.getElementById('attribute-accordion-suitability-grid');
+	/* TODO: children? */
+	/* TODO: dogs? */
+	/* TODO: cats? */
+
+	let behaviorGrid = document.getElementById('attribute-accordion-behavior-grid');
+	/* TODO: laid back? */
+	/* TODO: shy */
+	/* TODO: special needs */
+	/* TODO: foster care */
+
+	/* SECTION: contact and adopt */
+	/* TODO: animalId */
+	/* TODO: dogLocation */
+	/* TODO: contactPhone, contactStreetAddress, contactCity, contactState, contactZip */
 }
 
 /**
