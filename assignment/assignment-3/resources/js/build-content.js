@@ -251,6 +251,9 @@ const attributeDescription = {
 
 	specialNeedsTrue: 'I will require additional or special care.',
 	specialNeedsFalse: 'I will not require any additional or special care.',
+
+	fosterCareTrue: 'I am currently living in a foster home.',
+	fosterCareFalse: 'I am not currently living in a foster home.'
 }
 
 /**
