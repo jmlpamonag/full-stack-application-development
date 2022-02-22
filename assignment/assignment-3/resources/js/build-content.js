@@ -239,7 +239,9 @@ function buildIndex() {
  * @param index		the index position of the animal a detail document should be built for.
  */
 function buildDetail(index) {
-	console.log(`loading detail document for animal at index ${index}, ${animals[index].animalName}`);
+	let animal = animals[index];
+
+	$('#detail-carousel-container').append(buildCarouselElement(animal.animalImages, animal.animalName));
 }
 
 /**
@@ -388,6 +390,110 @@ function buildCardButtonElement(value, href) {
 	button.innerText = value;
 
 	return button;
+}
+
+/**
+ * Build a Bootstrap carousel element with indicator and direction control elements.
+ *
+ * @param images	the links to images that should be displayed in this carousel.
+ * @param name		the name of the animal for which the carousel is being generated.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap carousel element.
+ */
+function buildCarouselElement(images, name) {
+	let id = `carousel-${name.toLowerCase()}`;
+
+	let carousel = document.createElement('div');
+	carousel.setAttribute('class', 'carousel slide');
+	carousel.setAttribute('id', id);
+	carousel.setAttribute('data-bs-ride', 'carousel');
+
+	let indicators = document.createElement('div');
+	indicators.setAttribute('class', 'carousel-indicators');
+
+	images.forEach((image, index) => {
+		let indicator = document.createElement('button');
+		indicator.setAttribute('type', 'button');
+		indicator.setAttribute('data-bs-target', `#${id}`);
+		indicator.setAttribute('data-bs-slide-to', `${index}`);
+		indicator.setAttribute('aria-label', `${name} ${index + 1}`);
+
+		if (index === 0) {indicator.setAttribute('class', 'active');
+			indicator.setAttribute('aria-current', 'true');
+		}
+
+		indicators.append(indicator);
+	});
+
+	let inner = document.createElement('div');
+	inner.setAttribute('class', 'carousel-inner');
+
+	images.forEach((image, index) => {
+		let item = document.createElement('div');
+
+		if (index === 0) {
+			item.setAttribute('class', 'carousel-item active');
+		} else {
+			item.setAttribute('class', 'carousel-item');
+		}
+
+		let img = document.createElement('img');
+		img.setAttribute('class', 'd-block w-100');
+		img.setAttribute('src', image);
+		img.setAttribute('alt', `${name} ${index + 1}`);
+
+		item.append(img);
+		inner.append(item);
+	});
+
+	let prev = buildCarouselControlElement('prev', id);
+	let next = buildCarouselControlElement('next', id);
+
+	carousel.append(indicators, inner, prev, next);
+
+	return carousel;
+}
+
+/**
+ * Build the three Bootstrap carousel control elements: a button, an icon, and descriptive text.
+ *
+ * @param direction		the direction that the control should be designed for; either 'previous' or 'next'.
+ * @param id			the 'id' attribute of the carousel that these elements should control.
+ *
+ * @returns {HTMLButtonElement}		the Bootstrap carousel control element.
+ */
+function buildCarouselControlElement(direction, id) {
+	let control = document.createElement('button');
+	let icon = document.createElement('span');
+	let text = document.createElement('span');
+
+	control.setAttribute('type', 'button');
+	control.setAttribute('data-bs-target', `#${id}`);
+
+	icon.setAttribute('aria-hidden', 'true');
+
+	text.setAttribute('class', 'visually-hidden');
+
+	if (direction === 'prev') {
+		control.setAttribute('class', 'carousel-control-prev');
+		control.setAttribute('data-bs-slide', 'prev');
+
+		icon.setAttribute('class', 'carousel-control-prev-icon');
+
+		text.innerText = 'Previous';
+
+	} else if (direction === 'next') {
+		control.setAttribute('class', 'carousel-control-next');
+		control.setAttribute('data-bs-slide', 'next');
+
+		icon.setAttribute('class', 'carousel-control-next-icon');
+
+		text.innerText = 'Next';
+	}
+
+	control.append(icon, text);
+
+	return control;
 }
 
 /**
