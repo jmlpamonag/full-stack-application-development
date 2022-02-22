@@ -232,6 +232,17 @@ function buildIndex() {
 }
 
 /**
+ * Build a detail document of information pertaining to a particular animal selected from the index. The index value
+ * is parsed from a value in the query string of the current URL. Note: this function is to be called independently
+ * in the detail document to invoke this function on page load.
+ *
+ * @param index		the index position of the animal a detail document should be built for.
+ */
+function buildDetail(index) {
+	console.log(`loading detail document for animal at index ${index}, ${animals[index].animalName}`);
+}
+
+/**
  * Build a Bootstrap 'card' element to be appended to the parent container in the index document.
  *
  * @param animal	the object from the dataset to retrieve data from.
@@ -377,4 +388,50 @@ function buildCardButtonElement(value, href) {
 	button.innerText = value;
 
 	return button;
+}
+
+/**
+ * Function provided by Dr. Caporusso to parse query string values.
+ *
+ * @param url	the URL to be parsed.
+ *
+ * @returns {{}}	an array of parsed values.
+ */
+function getAllUrlParams(url) {
+	var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+	var obj = {};
+
+	if (queryString) {
+		queryString = queryString.split('#')[0];
+		var arr = queryString.split('&');
+
+		for (var i = 0; i < arr.length; i++) {
+			var a = arr[i].split('=');
+			var paramName = a[0];
+			var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+			if (paramName.match(/\[(\d+)]$/)) {
+				var key = paramName.replace(/\[(\d+)?/, '');
+				if (!obj[key]) obj[key] = [];
+
+				if (paramName.match(/\[\d+$/)) {
+					var index = /\[(\d+)/.exec(paramName)[1];
+					obj[key][index] = paramValue;
+				} else {
+					obj[key].push(paramValue);
+				}
+			} else {
+				if (!obj[paramName]) {
+					obj[paramName] = paramValue;
+				} else if (obj[paramName] && typeof obj[paramName] === 'string') {
+					obj[paramName] = [obj[paramName]];
+					obj[paramName].push(paramValue);
+				} else {
+					obj[paramName].push(paramValue);
+				}
+			}
+		}
+	}
+
+	return obj;
 }
