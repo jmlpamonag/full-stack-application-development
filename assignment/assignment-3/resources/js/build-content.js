@@ -241,7 +241,16 @@ const attributeDescription = {
 	suitableDogFalse: 'I prefer not to have other dogs around.',
 
 	suitableCatTrue: 'I do well with other cats around.',
-	suitableCatFalse: 'I prefer not to have other cats around.'
+	suitableCatFalse: 'I prefer not to have other cats around.',
+
+	laidBackTrue: 'I am laid back and relaxed.',
+	laidBackFalse: 'I am not laid back. I require a lot of attention.',
+
+	shyTrue: 'I am shy and might play hide-and-seek without telling you.',
+	shyFalse: 'I am not shy and make sure to let everyone know it.',
+
+	specialNeedsTrue: 'I will require additional or special care.',
+	specialNeedsFalse: 'I will not require any additional or special care.',
 }
 
 /**
