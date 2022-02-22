@@ -540,6 +540,48 @@ function buildCarouselControlElement(direction, id) {
 }
 
 /**
+ * Build a Bootstrap 'card' element to be appended to an accordion grid container element within the detail document,
+ * styled with appropriate [color]{@link https://getbootstrap.com/docs/5.1/customize/color/} and
+ * [icon]{@link https://icons.getbootstrap.com/} attributes.
+ *
+ * @param attribute		a semantic name of the attribute as it is represented in the dataset.
+ * @param description	a short description of the relationship between the attribute and the attribute value.
+ * @param icon			an icon name based on the BI webfont <strong>without</strong> the 'bi-' prefix.
+ * @param color			a color name based on the current Bootstrap theme color palette <strong>without</strong> the
+ * 						'bg-' prefix.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element for the detail document.
+ */
+function buildAccordionAttributeElement(attribute, description, icon, color) {
+	let col = buildColElement();
+	let card = buildCardElement();
+	let body = buildCardBodyElement();
+
+	let badgeContainer = document.createElement('h3');
+
+	let badge = document.createElement('span');
+	badge.setAttribute('class', `badge bg-${color} text-start w-100`);
+
+	let badgeIcon = document.createElement('i');
+	badgeIcon.setAttribute('class', `bi bi-${icon}`);
+
+	let badgeAttribute = document.createElement('span');
+	badgeAttribute.innerText = ` ${attribute}`;
+
+	let attributeDescription = document.createElement('p');
+	attributeDescription.setAttribute('class', 'body-text mx-1 mb-0');
+	attributeDescription.innerText = description;
+
+	badge.append(badgeIcon, badgeAttribute);
+	badgeContainer.append(badge);
+	body.append(badgeContainer, attributeDescription);
+	card.append(body);
+	col.append(card);
+
+	return col;
+}
+
+/**
  * Function provided by Dr. Caporusso to parse query string values.
  *
  * @param url	the URL to be parsed.
