@@ -246,6 +246,14 @@ function buildDetail(index) {
 	/* set the about heading text to include the name of the animal */
 	let aboutHeading = document.getElementById('about-heading');
 	aboutHeading.innerText = `About ${animal.animalName}...`;
+
+	/* append the values of the aboutMeDescription array to the about-description container */
+	let aboutDescription = document.getElementById('about-description');
+	animal.aboutMeDescription.forEach(value => {
+		let paragraph = document.createElement('p');
+		paragraph.innerText = value.toString();
+		aboutDescription.append(paragraph);
+	});
 }
 
 /**
