@@ -4,3 +4,7 @@
 
 # intellij-specific
 /out/
+
+# all .css and .css.map files due to the use of sass
+*.css
+*.css.map
