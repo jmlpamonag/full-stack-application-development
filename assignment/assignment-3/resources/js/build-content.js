@@ -242,6 +242,10 @@ function buildDetail(index) {
 	let animal = animals[index];
 
 	$('#detail-carousel-container').append(buildCarouselElement(animal.animalImages, animal.animalName));
+
+	/* set the about heading text to include the name of the animal */
+	let aboutHeading = document.getElementById('about-heading');
+	aboutHeading.innerText = `About ${animal.animalName}...`;
 }
 
 /**
