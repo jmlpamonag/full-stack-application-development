@@ -281,6 +281,9 @@ function buildIndex() {
 function buildDetail(index) {
 	let animal = animals[index];
 
+	/* set the document title to include the animal name */
+	document.title = `${animal.animalName} | Kenton County Animal Adoption`;
+
 	$('#detail-carousel-container').append(buildCarouselElement(animal.animalImages, animal.animalName));
 
 	/* set the about heading text to include the name of the animal */
