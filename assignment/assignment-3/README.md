@@ -1,5 +1,8 @@
 # Assignment Three: A JavaScript-powered Website
 
+View the most recent published (publicly committed) content 
+[here](https://muzzarellimj.github.io/full-stack-application-development/assignment/assignment-3/). 
+
 ## Assignment Guidelines
 Our task in this assignment is to redesign a selection of the Kenton County Animal Shelter's 'adoptable animals'
 webpages, the initial data of which can be found on Canvas. The goal is to create two HTML templates, index.html and
