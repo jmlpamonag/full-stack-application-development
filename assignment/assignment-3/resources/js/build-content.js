@@ -492,7 +492,7 @@ function buildCarouselElement(images, name) {
 	let id = `carousel-${name.toLowerCase()}`;
 
 	let carousel = document.createElement('div');
-	carousel.setAttribute('class', 'carousel slide');
+	carousel.setAttribute('class', 'carousel slide h-100');
 	carousel.setAttribute('id', id);
 	carousel.setAttribute('data-bs-ride', 'carousel');
 
@@ -514,19 +514,19 @@ function buildCarouselElement(images, name) {
 	});
 
 	let inner = document.createElement('div');
-	inner.setAttribute('class', 'carousel-inner');
+	inner.setAttribute('class', 'carousel-inner h-100');
 
 	images.forEach((image, index) => {
 		let item = document.createElement('div');
 
 		if (index === 0) {
-			item.setAttribute('class', 'carousel-item active');
+			item.setAttribute('class', 'carousel-item active h-100');
 		} else {
-			item.setAttribute('class', 'carousel-item');
+			item.setAttribute('class', 'carousel-item h-100');
 		}
 
 		let img = document.createElement('img');
-		img.setAttribute('class', 'd-block w-100');
+		img.setAttribute('class', 'd-block w-100 h-100');
 		img.setAttribute('src', image);
 		img.setAttribute('alt', `${name} ${index + 1}`);
 

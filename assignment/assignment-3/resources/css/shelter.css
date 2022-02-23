@@ -30,4 +30,12 @@
   }
 }
 
+/* detail */
+#detail-carousel-container {
+  height: 75vh;
+}
+#detail-carousel-container img {
+  object-fit: cover;
+}
+
 /*# sourceMappingURL=shelter.css.map */
