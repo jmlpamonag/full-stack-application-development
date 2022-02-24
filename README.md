@@ -22,7 +22,7 @@ The course is delivered in-person with assignments, quizzes, and supplemental re
 | Week | Chapter(s) | Topic(s)                                          | Assignment(s)                                                                                                        | Comment(s) |
 |:-----|:-----------|:--------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------|:-----------|
 | 1    | -          | HTML5 and Bootstrap                               | -                                                                                                                    | -          |
-| 2    | -          | Version Control Systems for Full-Stack Developers | -                                                                                                                    | -          |
+| 2    | -          | Version Control Systems for Full-Stack Developers | [Assignment 2](https://github.com/muzzarellimj/full-stack-application-development/tree/main/assignment/assignment-2) | -          |
 | 3    | -          | Basic JavaScript                                  | [Assignment 3](https://github.com/muzzarellimj/full-stack-application-development/tree/main/assignment/assignment-3) | -          |
 | 4    | -          | jQuery and Client-Server Communication            | -                                                                                                                    | -          |
 | 5    | -          | Advanced JavaScript                               | -                                                                                                                    | -          |
