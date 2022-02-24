@@ -298,8 +298,6 @@ function buildDetail(index) {
 		aboutDescription.append(paragraph);
 	});
 
-	console.log(attributeDescription.healthCheckTrue);
-
 	let generalGrid = document.getElementById('attribute-accordion-general-grid');
 	generalGrid.append(buildAccordionAttributeElement('Breed', formatBreed(animal.breed, animal.secondBreed), 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Sex', animal.sex, 'info-circle-fill', 'secondary'));
