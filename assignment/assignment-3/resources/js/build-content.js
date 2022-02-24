@@ -302,7 +302,7 @@ function buildDetail(index) {
 	let generalGrid = document.getElementById('attribute-accordion-general-grid');
 	generalGrid.append(buildAccordionAttributeElement('Breed', `${formatBreed(animal.breed, animal.secondBreed)}.`, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Sex', `${animal.sex}.`, 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Color', `${animal.color}.`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Color', `${formatColor(animal.color)}.`, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Age', `${formatAge(animal.age)}.`, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Size', `${animal.size}.`, 'info-circle-fill', 'secondary'));
 
@@ -366,9 +366,9 @@ function buildIndexCardElement(animal, index) {
 	let text;
 
 	if (animal.age === 'Adult') {
-		text = buildCardTextElement(`${animal.animalName} is an adult ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, and ${animal.color.toLowerCase()} in color.`);
+		text = buildCardTextElement(`${animal.animalName} is an adult ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, and ${formatColor(animal.color).toLowerCase()} in color.`);
 	} else {
-		text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, ${formatAge(animal.age).toLowerCase()} in age, and ${animal.color.toLowerCase()} in color.`);
+		text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, ${formatAge(animal.age).toLowerCase()} in age, and ${formatColor(animal.color).toLowerCase()} in color.`);
 	}
 
 	let button = buildCardButtonElement('Learn More', 'detail.html?index=' + index);
@@ -880,6 +880,54 @@ function formatBreed(primary, secondary) {
 	}
 
 	return result.trim();
+}
+
+/**
+ * Format and concatenate the color attribute values for display through a short series of steps: return an undefined
+ * color string if the attribute value is not valid or the color(s) with proper grammar and punctuation, should
+ * multiple exist.
+ *
+ * @param color		the color of the animal.
+ *
+ * @returns {string}	the formatted and concatenated color attribute.
+ */
+function formatColor(color) {
+	/* if the color provided is invalid, return a string representing 'undefined' */
+	if (color.length === 0) {
+		return 'Unknown or not provided.';
+	}
+
+	/* split the color value on '/' and store each element */
+	let colors = color.split('/');
+
+	/* if there is only one color, return it immediately */
+	if (colors.length === 1) {
+		return colors[0].trim();
+	}
+
+	/* if there are two colors, return a concatenation of the two */
+	if (colors.length === 2) {
+		return colors[0].trim() + ' and ' + colors[1].trim().toLowerCase();
+	}
+
+	/* initialise an empty string to store the result */
+	let result = '';
+
+	/* if there are more than two colors, return a concatenation of them with proper grammar and punctuation */
+	colors.forEach((value, index) => {
+		if (index < colors.length - 1) {
+			if (index === 0) {
+				result += value.trim() + ', ';
+			} else {
+				result += value.trim().toLowerCase() + ', ';
+			}
+		} else {
+			result = result.trim() + ' and ' + value.trim();
+		}
+	});
+
+	/* return the concatenated result */
+	return result;
 }
 
 /**
