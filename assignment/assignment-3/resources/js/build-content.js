@@ -307,13 +307,13 @@ function buildDetail(index) {
 	generalGrid.append(buildAccordionAttributeElement('Size', animal.size, 'info-circle-fill', 'secondary'));
 
 	if (animal.sex === 'Male' || animal.sex === 'male') {
-		generalGrid.append(buildAccordionAttributeElement('Neutered', animal.spayedOrNeutered, 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Neutered', formatBoolean(animal.spayedOrNeutered), 'info-circle-fill', 'secondary'));
 	} else if (animal.sex === 'Female' || animal.sex === 'female') {
-		generalGrid.append(buildAccordionAttributeElement('Spayed', animal.spayedOrNeutered, 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Spayed', formatBoolean(animal.spayedOrNeutered), 'info-circle-fill', 'secondary'));
 	}
 
 	if (animal.type === 'Cat' || animal.type === 'cat') {
-		generalGrid.append(buildAccordionAttributeElement('Declawed?', animal.declawed, 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Declawed?', formatBoolean(animal.declawed), 'info-circle-fill', 'secondary'));
 	}
 
 	let healthGrid = document.getElementById('attribute-accordion-health-grid');
@@ -818,6 +818,17 @@ function formatAge(age) {
 	}
 
 	return `Approximately ${Math.round(day / 365)} years`;
+}
+
+/**
+ * Format a boolean value for display purposes to return 'Yes' if true and 'No' if false.
+ *
+ * @param value		the boolean value to format.
+ *
+ * @returns {string}	the 'formatted' string representation of the boolean value.
+ */
+function formatBoolean(value) {
+	return value === true ? 'Yes' : 'No';
 }
 
 /**
