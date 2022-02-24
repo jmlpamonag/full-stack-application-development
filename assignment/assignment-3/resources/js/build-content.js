@@ -301,7 +301,7 @@ function buildDetail(index) {
 	console.log(attributeDescription.healthCheckTrue);
 
 	let generalGrid = document.getElementById('attribute-accordion-general-grid');
-	generalGrid.append(buildAccordionAttributeElement('Breed',`${animal.breed} and ${animal.secondBreed}`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Breed', formatBreed(animal.breed, animal.secondBreed), 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Sex', animal.sex, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Color', animal.color, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Age', animal.age, 'info-circle-fill', 'secondary'));
@@ -355,7 +355,7 @@ function buildIndexCardElement(animal, index) {
 	let body = buildCardBodyElement();
 	let title = buildCardTitleHeading(animal.animalName);
 	let subtitle = buildCardSubtitleHeading(animal.sex + ', ' + animal.breed);
-	let text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${animal.breed}, ${animal.age} in age, and ${animal.color} in color.`);
+	let text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, ${animal.age} in age, and ${animal.color} in color.`);
 	let button = buildCardButtonElement('Learn More', 'detail.html?index=' + index);
 
 	body.append(title, subtitle, text, button);
@@ -755,6 +755,57 @@ function buildBehaviorAttributeElement(attribute, value) {
 	}
 
 	return element;
+}
+
+/**
+ * Format and concatenate the primary and secondary breed attributes for display through a short series of steps:
+ * return an undefined breed string if neither attribute is valid or a trimmed concatenation of the primary and
+ * secondary breeds, should they exist. Additionally, change the case of words unrelated to the proper names of the
+ * breed.
+ *
+ * @param primary		the primary breed of the animal.
+ * @param secondary		the secondary breed of the animal.
+ *
+ * @returns {string}	the formatted and concatenated breed attribute.
+ */
+function formatBreed(primary, secondary) {
+	/* if neither breed provided contains a valid value, return a string representing 'undefined' */
+	if (primary.length === 0 && secondary.length === 0) {
+		return 'Unknown or not provided.';
+	}
+
+	let result = '';
+
+	/* if primary breed is provided and valid, format and concatenate with the result */
+	if (primary.length > 0) {
+		let primarySplit = primary.split(' ');
+
+		primarySplit.forEach((word) => {
+			if (word === 'Cross') {
+				word = word.toLowerCase();
+			}
+
+			result += `${word} `;
+		});
+	}
+
+	/* if secondary breed is provided and valid, format and concatenate with result */
+	if (secondary.length > 0) {
+		/* first, add 'and ' to the concatenated result string */
+		result += 'and ';
+
+		let secondarySplit = secondary.split(' ');
+
+		secondarySplit.forEach((word) => {
+			if (word === 'Cross') {
+				word = word.toLowerCase();
+			}
+
+			result += `${word} `;
+		});
+	}
+
+	return result.trim();
 }
 
 /**
