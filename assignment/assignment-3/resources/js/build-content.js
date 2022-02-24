@@ -262,7 +262,7 @@ const attributeDescription = {
  * independently in the index document to invoke this function on page load.
  */
 function buildIndex() {
-	let parent = $('#index-parent');
+	let parent = document.getElementById('index-parent');
 
 	for (let i = 0; i < animals.length; i++) {
 		let animal = animals[i];
@@ -284,7 +284,8 @@ function buildDetail(index) {
 	/* set the document title to include the animal name */
 	document.title = `${animal.animalName} | Kenton County Animal Adoption`;
 
-	$('#detail-carousel-container').append(buildCarouselElement(animal.animalImages, animal.animalName));
+	let carouselContainer = document.getElementById('detail-carousel-container');
+	carouselContainer.append(buildCarouselElement(animal.animalImages, animal.animalName));
 
 	/* set the about heading text to include the name of the animal */
 	let aboutHeading = document.getElementById('about-heading');
