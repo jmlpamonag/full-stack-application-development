@@ -334,10 +334,19 @@ function buildDetail(index) {
 	behaviorGrid.append(buildBehaviorAttributeElement('special-need', animal.isSpecialNeeds));
 	behaviorGrid.append(buildBehaviorAttributeElement('foster-care', animal.inFosterCase));
 
-	/* SECTION: contact and adopt */
-	/* TODO: animalId */
-	/* TODO: dogLocation */
-	/* TODO: contactPhone, contactStreetAddress, contactCity, contactState, contactZip */
+	let adopt = document.getElementById('adopt');
+
+	let adoptParagraph = document.createElement('p');
+	adoptParagraph.setAttribute('class', 'py-1');
+	adoptParagraph.innerText = `${animal.animalName} can be adopted by contacting the facility they are being housed at - ${animal.dogLocation} - and mentioning their name, ${animal.animalName}, and ID, ${animal.animalID}. Please feel free to visit or contact this location: 
+								
+								${animal.dogLocation}
+								${animal.contactPhone}
+								${animal.contactStreetAddress}
+								${animal.contactCity}, ${animal.contactState}, ${animal.contactZip}
+								
+								Unfortunately we cannot put animals on hold over the phone, nor can we ensure that the animal will still be available when you arrive. This website is updated as frequently as possible, but there is a chance that another party may already be inquiring or in the process of adopting the animal you are interested in seeing.`;
+	adopt.append(adoptParagraph);
 }
 
 /**
