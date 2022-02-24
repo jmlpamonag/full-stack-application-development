@@ -303,7 +303,7 @@ function buildDetail(index) {
 	generalGrid.append(buildAccordionAttributeElement('Breed', formatBreed(animal.breed, animal.secondBreed), 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Sex', animal.sex, 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Color', animal.color, 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Age', animal.age, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Age', formatAge(animal.age), 'info-circle-fill', 'secondary'));
 	generalGrid.append(buildAccordionAttributeElement('Size', animal.size, 'info-circle-fill', 'secondary'));
 
 	if (animal.sex === 'Male' || animal.sex === 'male') {
@@ -363,7 +363,14 @@ function buildIndexCardElement(animal, index) {
 	let body = buildCardBodyElement();
 	let title = buildCardTitleHeading(animal.animalName);
 	let subtitle = buildCardSubtitleHeading(animal.sex + ', ' + animal.breed);
-	let text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, ${animal.age} in age, and ${animal.color} in color.`);
+	let text;
+
+	if (animal.age === 'Adult') {
+		text = buildCardTextElement(`${animal.animalName} is an adult ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, and ${animal.color.toLowerCase()} in color.`);
+	} else {
+		text = buildCardTextElement(`${animal.animalName} is a ${animal.sex.toLowerCase()} ${formatBreed(animal.breed, animal.secondBreed)}, ${formatAge(animal.age).toLowerCase()} in age, and ${animal.color.toLowerCase()} in color.`);
+	}
+
 	let button = buildCardButtonElement('Learn More', 'detail.html?index=' + index);
 
 	body.append(title, subtitle, text, button);
@@ -763,6 +770,54 @@ function buildBehaviorAttributeElement(attribute, value) {
 	}
 
 	return element;
+}
+
+/**
+ * Format and calculate the age attribute for display through a short series of steps: return an undefined age string
+ * if the provided age is invalid or a calculated approximation of age in months or years, depending on the age value.
+ *
+ * @param age	the age of the animal.
+ *
+ * @returns {string}	the formatted and calculated age approximation.
+ */
+function formatAge(age) {
+	/* if the age provided is invalid, return a string representing 'undefined' */
+	if (age.length === 0) {
+		return 'Unknown or not provided.';
+	}
+
+	/* define day variable to calculate total age */
+	let day = 0;
+
+	/* split age on space character */
+	let split = age.split(' ');
+
+	/* iterate through each measurement and parse year, month, and week values */
+	split.forEach((measurement) => {
+		if (measurement.includes('Yrs')) {
+			day += (parseInt(measurement) * 365);
+		}
+
+		if (measurement.includes('Mths')) {
+			day += (parseInt(measurement) * 30);
+		}
+
+		if (measurement.includes('Wks')) {
+			day += (parseInt(measurement) * 7);
+		}
+	});
+
+	let year = day / 365;
+
+	if (year < 1) {
+		return `Approximately ${Math.round(day / 30)} months`;
+	}
+
+	if (year < 2) {
+		return `Approximately ${Math.round(day / 365)} year`;
+	}
+
+	return `Approximately ${Math.round(day / 365)} years`;
 }
 
 /**
