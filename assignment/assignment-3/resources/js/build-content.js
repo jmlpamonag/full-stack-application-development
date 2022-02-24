@@ -300,20 +300,20 @@ function buildDetail(index) {
 	});
 
 	let generalGrid = document.getElementById('attribute-accordion-general-grid');
-	generalGrid.append(buildAccordionAttributeElement('Breed', formatBreed(animal.breed, animal.secondBreed), 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Sex', animal.sex, 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Color', animal.color, 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Age', formatAge(animal.age), 'info-circle-fill', 'secondary'));
-	generalGrid.append(buildAccordionAttributeElement('Size', animal.size, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Breed', `${formatBreed(animal.breed, animal.secondBreed)}.`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Sex', `${animal.sex}.`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Color', `${animal.color}.`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Age', `${formatAge(animal.age)}.`, 'info-circle-fill', 'secondary'));
+	generalGrid.append(buildAccordionAttributeElement('Size', `${animal.size}.`, 'info-circle-fill', 'secondary'));
 
 	if (animal.sex === 'Male' || animal.sex === 'male') {
-		generalGrid.append(buildAccordionAttributeElement('Neutered', formatBoolean(animal.spayedOrNeutered), 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Neutered?', `${formatBoolean(animal.spayedOrNeutered)}.`, 'info-circle-fill', 'secondary'));
 	} else if (animal.sex === 'Female' || animal.sex === 'female') {
-		generalGrid.append(buildAccordionAttributeElement('Spayed', formatBoolean(animal.spayedOrNeutered), 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Spayed?', `${formatBoolean(animal.spayedOrNeutered)}.`, 'info-circle-fill', 'secondary'));
 	}
 
 	if (animal.type === 'Cat' || animal.type === 'cat') {
-		generalGrid.append(buildAccordionAttributeElement('Declawed?', formatBoolean(animal.declawed), 'info-circle-fill', 'secondary'));
+		generalGrid.append(buildAccordionAttributeElement('Declawed?', `${formatBoolean(animal.declawed)}.`, 'info-circle-fill', 'secondary'));
 	}
 
 	let healthGrid = document.getElementById('attribute-accordion-health-grid');
