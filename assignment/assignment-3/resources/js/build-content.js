@@ -6,8 +6,8 @@
 const animals = [
 	{
 		"animalName"            :   "Benny",
-		/* images courtesy of Joshua Dixon on Unsplash (https://unsplash.com/@joshdixon00) */
-		"animalImages"          :   [ 'https://i.imgur.com/w1aMeLB.jpg', 'https://i.imgur.com/oG0IUhv.jpg' ],
+		/* sample images courtesy of massimo mancini on unsplash (https://unsplash.com/@00mancio00) */
+		"animalImages"          :   [ 'https://i.imgur.com/gcY1Jg6.jpg', 'https://i.imgur.com/y6hPdEf.jpg', 'https://i.imgur.com/3MXjQ06.jpg', 'https://i.imgur.com/Tu0W7Ux.jpg', 'https://i.imgur.com/ccUVSQw.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "Australian Shepherd Cross",
 		"secondBreed"           :   "",
@@ -40,8 +40,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Cornelia",
-		/* images courtesy of Vidhey PV on Unsplash (https://unsplash.com/@pv2k) */
-		"animalImages"          :   [ 'https://i.imgur.com/aBxzNf8.jpg', 'https://i.imgur.com/a9dE6Uh.jpg' ],
+		/* sample images courtesy of loriane magnenat on unsplash (https://unsplash.com/@loriane_photography) */
+		"animalImages"          :   [ 'https://i.imgur.com/3SUmR2g.jpg', 'https://i.imgur.com/HJ1Cb2I.jpg', 'https://i.imgur.com/XS7iBH8.jpg', 'https://i.imgur.com/U441X0r.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "Boxer Cross",
 		"secondBreed"           :   "",
@@ -78,8 +78,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Hemingway",
-		/* images courtesy of Milada Vigerova on Unsplash (https://unsplash.com/@milada_vigerova) */
-		"animalImages"          :   [ 'https://i.imgur.com/HoJOoxu.jpg','https://i.imgur.com/qCibVNc.jpg','https://i.imgur.com/LPVqCQw.jpg' ],
+		/* sample images courtesy of milada vigerova on unsplash (https://unsplash.com/@milada_vigerova) */
+		"animalImages"          :   [ 'https://i.imgur.com/zBZ0037.jpg','https://i.imgur.com/di7GGxW.jpg', 'https://i.imgur.com/eunA94U.jpg' ],
 		"type"                  :   "Cat",
 		"breed"                 :   "Domestic Short Hair Cross",
 		"size"                  :   "Large",
@@ -112,8 +112,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Howard",
-		/* images courtesy of Seven Song on Unsplash (https://unsplash.com/@sevenbenzema) */
-		"animalImages"          :   [ 'https://i.imgur.com/Ftgm2mU.jpg', 'https://i.imgur.com/TvYNOqT.jpg', 'https://i.imgur.com/EkpNJDu.jpg' ],
+		/* sample images courtesy of seven song on unsplash (https://unsplash.com/@sevenbenzema) */
+		"animalImages"          :   [ 'https://i.imgur.com/2JchadL.jpg', 'https://i.imgur.com/0TxjSWT.jpg', 'https://i.imgur.com/ngdQ2Ln.jpg' ],
 		"type"                  :   "Cat",
 		"breed"                 :   "Domestic Short Hair Cross",
 		"size"                  :   "Large",
@@ -146,8 +146,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Niko",
-		/* images courtesy of Krystal Ng on Unsplash (https://unsplash.com/@bykrystal) */
-		"animalImages"          :   [ 'https://i.imgur.com/tz2ifSh.jpg', 'https://i.imgur.com/W3f2r8w.jpg' ],
+		/* sample images courtesy of jelena senicic on unsplash (https://unsplash.com/@senchy) */
+		"animalImages"          :   [ 'https://i.imgur.com/dS9NHIm.jpg', 'https://i.imgur.com/CchCdcR.jpg' ],
 		"type"                  :   "Kitten",
 		"breed"                 :   "Domestic Longhair Cross",
 		"size"                  :   "Large",
@@ -180,8 +180,8 @@ const animals = [
 	},
 	{
 		"animalName"            :   "Wishbone",
-		/* image courtesy of Mike Burke on Unsplash (https://unsplash.com/@themikeburke) */
-		"animalImages"          :   [ 'https://i.imgur.com/t6Ls5xE.jpg' ],
+		/* sample images courtesy of sébastien lavalaye on unsplash (https://unsplash.com/@lavalaye) */
+		"animalImages"          :   [ 'https://i.imgur.com/vAZxuIY.jpg', 'https://i.imgur.com/FK9lI0V.jpg', 'https://i.imgur.com/ISOfbxX.jpg' ],
 		"type"                  :   "Dog",
 		"breed"                 :   "American Bulldog Cross",
 		"size"                  :   "Large",
