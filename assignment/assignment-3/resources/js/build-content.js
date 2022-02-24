@@ -321,10 +321,10 @@ function buildDetail(index) {
 	suitabilityGrid.append(buildSuitabilityAttributeElement('cat', animal.likeCats));
 
 	let behaviorGrid = document.getElementById('attribute-accordion-behavior-grid');
-	/* TODO: laid back? */
-	/* TODO: shy */
-	/* TODO: special needs */
-	/* TODO: foster care */
+	behaviorGrid.append(buildBehaviorAttributeElement('laid-back', animal.isLaidBack));
+	behaviorGrid.append(buildBehaviorAttributeElement('shy', animal.isShy));
+	behaviorGrid.append(buildBehaviorAttributeElement('special-need', animal.isSpecialNeeds));
+	behaviorGrid.append(buildBehaviorAttributeElement('foster-care', animal.inFosterCase));
 
 	/* SECTION: contact and adopt */
 	/* TODO: animalId */
@@ -698,6 +698,52 @@ function buildSuitabilityAttributeElement(attribute, value) {
 			value === true ?
 				element = buildAccordionAttributeElement('Cats', attributeDescription.suitableCatTrue, 'heart-half', 'primary') :
 				element = buildAccordionAttributeElement('Cats', attributeDescription.suitableCatFalse, 'heart-fill', 'warning'); break;
+	}
+
+	return element;
+}
+
+/**
+ * Build a Bootstrap 'card' element to be appended to the attribute accordion behavior grid within the detail
+ * document.
+ *
+ * @param attribute		the name of the attribute for use in the switch statement; e.g., 'laid-back', 'shy',
+ * 						'special-need', or 'foster-care'.
+ * @param value			the value - true or false - of the data attribute.
+ *
+ * @returns {HTMLDivElement}	a Bootstrap 'card' element to be appended to the attribute accordion behavior grid.
+ */
+function buildBehaviorAttributeElement(attribute, value) {
+	let element;
+
+	/* if the attribute value is null, meaning no value was assigned, build an empty element with 'display: none' */
+	if (value === null) {
+		element = document.createElement('div');
+		element.setAttribute('style', 'display: none');
+
+		return element;
+	}
+
+	switch (attribute) {
+		case 'laid-back':
+			value === true ?
+				element = buildAccordionAttributeElement('Laid Back', attributeDescription.laidBackTrue, 'activity', 'primary') :
+				element = buildAccordionAttributeElement('Laid Back', attributeDescription.laidBackFalse, 'activity', 'primary'); break;
+
+		case 'shy':
+			value === true ?
+				element = buildAccordionAttributeElement('Shy', attributeDescription.shyTrue, 'heart-fill', 'primary') :
+				element = buildAccordionAttributeElement('Shy', attributeDescription.shyFalse, 'hearts', 'primary'); break;
+
+		case 'special-need':
+			value === true ?
+				element = buildAccordionAttributeElement('Special Needs', attributeDescription.specialNeedsTrue, 'eye-fill', 'primary') :
+				element = buildAccordionAttributeElement('Special Needs', attributeDescription.specialNeedsFalse, 'eye-slash-fill', 'primary'); break;
+
+		case 'foster-care':
+			value === true ?
+				element = buildAccordionAttributeElement('Foster Care', attributeDescription.fosterCareTrue, 'house-heart-fill', 'primary') :
+				element = buildAccordionAttributeElement('Foster Care', attributeDescription.fosterCareFalse, 'house-heart-fill', 'primary'); break;
 	}
 
 	return element;
