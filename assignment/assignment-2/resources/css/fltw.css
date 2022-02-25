@@ -9,6 +9,13 @@
   width: 100%;
 }
 
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -23,6 +30,33 @@ body header .header-logo {
 }
 body header .header-logo .logo {
   height: 80px;
+}
+body main {
+  height: 100%;
+}
+body main .filter-container {
+  width: 20%;
+}
+body main .filter-container .filter-menu {
+  left: 5rem;
+  padding-left: 20%;
+  position: sticky;
+  width: 80%;
+  top: 5rem;
+}
+body main .filter-container .filter-menu label {
+  padding-top: 2rem;
+}
+body main .filter-container .filter-menu .radio-group {
+  width: 50%;
+}
+body main .filter-container .filter-menu .button-group {
+  padding-top: 5rem;
+  width: 100%;
+}
+body main .filter-container .filter-menu .button-group button {
+  width: 45%;
+  margin: auto;
 }
 body footer {
   background: #0d6efd;
