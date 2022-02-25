@@ -15,6 +15,7 @@ $lg: 992px
 /* block-element modifiers utilised in the entire document */
 .flex
 	display: flex
+	flex-wrap: wrap
 	height: 100%
 	width: 100%
 
@@ -50,7 +51,7 @@ body
 				padding-left: 20%
 				position: sticky
 				width: 80%
-				top: 5rem
+				top: 2rem
 
 				label
 					padding-top: 2rem
@@ -64,6 +65,72 @@ body
 
 					button
 						width: 45%
+						margin: auto
+
+		.content-container
+			width: 80%
+
+			.item
+				background: $secondary
+				display: flex
+				flex-direction: column
+				margin: 5%
+				width: 90%
+
+				@media (min-width: $sm)
+					margin: 5%
+					width: 40%
+
+				@media (min-width: $lg)
+					margin: 2.5%
+					width: 20%
+
+				.item-image-container
+					position: relative
+
+					.item-image
+						height: 100%
+						width: 100%
+						object-fit: cover
+
+					.item-image-left-overlay
+						top: 5%
+						left: 10%
+						position: absolute
+
+						img
+							height: 30px
+
+					.item-image-right-overlay
+						top: 5%
+						right: 10%
+						position: absolute
+
+						img
+							height: 30px
+
+				.item-title-container
+					text-align: center
+					padding: 2.5%
+					margin: auto
+
+					.item-title
+						height: 100%
+						display: block
+						vertical-align: center
+
+				.item-button-container
+					display: flex
+					padding: 5%
+
+					.item-button
+						align-self: end
+						background: $primary
+						color: $white
+						text-decoration: none
+						padding: 2.5%
+						text-align: center
+						width: 40%
 						margin: auto
 
 	footer
@@ -101,6 +168,8 @@ body
 
 @media screen and (min-width: $lg)
 	body
+		margin-bottom: 300px
+
 		header
 			height: 240px
 

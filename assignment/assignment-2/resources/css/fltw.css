@@ -5,6 +5,7 @@
 /* block-element modifiers utilised in the entire document */
 .flex {
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
 }
@@ -42,7 +43,7 @@ body main .filter-container .filter-menu {
   padding-left: 20%;
   position: sticky;
   width: 80%;
-  top: 5rem;
+  top: 2rem;
 }
 body main .filter-container .filter-menu label {
   padding-top: 2rem;
@@ -56,6 +57,76 @@ body main .filter-container .filter-menu .button-group {
 }
 body main .filter-container .filter-menu .button-group button {
   width: 45%;
+  margin: auto;
+}
+body main .content-container {
+  width: 80%;
+}
+body main .content-container .item {
+  background: #6c757d;
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+  width: 90%;
+}
+@media (min-width: 576px) {
+  body main .content-container .item {
+    margin: 5%;
+    width: 40%;
+  }
+}
+@media (min-width: 992px) {
+  body main .content-container .item {
+    margin: 2.5%;
+    width: 20%;
+  }
+}
+body main .content-container .item .item-image-container {
+  position: relative;
+}
+body main .content-container .item .item-image-container .item-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+body main .content-container .item .item-image-container .item-image-left-overlay {
+  top: 5%;
+  left: 10%;
+  position: absolute;
+}
+body main .content-container .item .item-image-container .item-image-left-overlay img {
+  height: 30px;
+}
+body main .content-container .item .item-image-container .item-image-right-overlay {
+  top: 5%;
+  right: 10%;
+  position: absolute;
+}
+body main .content-container .item .item-image-container .item-image-right-overlay img {
+  height: 30px;
+}
+body main .content-container .item .item-title-container {
+  text-align: center;
+  padding: 2.5%;
+  margin: auto;
+}
+body main .content-container .item .item-title-container .item-title {
+  height: 100%;
+  display: block;
+  vertical-align: center;
+}
+body main .content-container .item .item-button-container {
+  display: flex;
+  padding: 5%;
+}
+body main .content-container .item .item-button-container .item-button {
+  align-self: end;
+  background: #0d6efd;
+  color: #FFF;
+  text-decoration: none;
+  padding: 2.5%;
+  text-align: center;
+  width: 40%;
   margin: auto;
 }
 body footer {
@@ -94,6 +165,9 @@ body footer .language-select-container {
   }
 }
 @media screen and (min-width: 992px) {
+  body {
+    margin-bottom: 300px;
+  }
   body header {
     height: 240px;
   }
