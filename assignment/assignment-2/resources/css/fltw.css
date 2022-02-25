@@ -1,5 +1,6 @@
 /* import external font-family */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+/* color palette based on bootstrap color palette (because i am not creative) */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
