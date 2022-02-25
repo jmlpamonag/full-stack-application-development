@@ -12,7 +12,43 @@ $black: #000
 $sm: 576px
 $lg: 992px
 
+/* block-element modifiers utilised in the entire document */
+.flex
+	display: flex
+
 body
 	font-family: 'Poppins', sans-serif
 	margin: 0
 	padding: 0
+
+	header
+		background: $primary
+		height: 100px
+
+		.header-logo
+			padding: 10px 0 10px 5vw
+
+			.logo
+				height: 80px
+
+@media screen and (min-width: $sm)
+	body
+		header
+			height: 160px
+
+			.header-logo
+				padding: 10px 0 10px 5vw
+
+				.logo
+					height: 140px
+
+@media screen and (min-width: $lg)
+	body
+		header
+			height: 240px
+
+			.header-logo
+				padding: 20px 0 20px 5vw
+
+				.logo
+					height: 200px
