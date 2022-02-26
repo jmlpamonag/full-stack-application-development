@@ -3,6 +3,8 @@
 /* color palette based on bootstrap color palette (because i am not creative) */
 /* media breakpoint values based on bootstrap media breakpoint values (see above lack of creativity) */
 /* feature one of css preprocessor: @mixin and @include */
+/* @mixin to build per-element media breakpoints at media breakpoint value $sm */
+/* @mixin to build per-element media breakpoints at media breakpoint value $lg */
 /* feature two of css preprocessor: @function */
 /* block-element modifiers utilised in the entire document */
 .row {

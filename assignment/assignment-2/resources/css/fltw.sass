@@ -28,10 +28,11 @@ $lg: 992px
 @mixin half-width
 	width: 50%
 
+/* @mixin to build per-element media breakpoints at media breakpoint value $sm */
 @mixin at-small
 	@media screen and (min-width: $sm)
 		@content
-
+/* @mixin to build per-element media breakpoints at media breakpoint value $lg */
 @mixin at-large
 	@media screen and (min-width: $lg)
 		@content
