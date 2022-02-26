@@ -11,13 +11,15 @@
 
 	<body>
 		<header>
-			<div class="flex">
-				<a class="header-logo" href="#"><img class="logo" src="resources/img/logo.png" alt="FLTW"></a>
+			<div class="row">
+				<div class="header-logo-container">
+					<a href="#"><img class="header-logo-img" src="resources/img/logo.png" alt="FLTW"></a>
+				</div>
 
-				<div class="navigation">
-					<nav class="navigation-nav">
+				<div class="header-navigation-container">
+					<nav>
 						<a class="navigation-link" href="index.html">Home</a>
-						<a class="navigation-link" href="#">Link</a>
+						<a class="navigation-link-highlight" href="#">Link</a>
 						<a class="navigation-link" href="#">Link</a>
 						<a class="navigation-link" href="#">Link</a>
 						<a class="navigation-link" href="#">Link</a>
@@ -27,10 +29,10 @@
 		</header>
 
 		<main>
-			<div class="flex">
-				<div class="filter-container">
+			<div class="row">
+				<div class="main-filter-container">
 					<div class="filter-menu">
-						<div class="flex-col">
+						<div class="col">
 							<h3>Filter Menu</h3>
 
 							<label for="text">Text Field Label: </label>
@@ -52,227 +54,253 @@
 
 							<label>Radio Button Label:</label>
 
-							<div class="flex">
-								<div class="radio-group">
+							<div class="row">
+								<div class="filter-menu-radio-group">
 									<input id="radio-one" type="radio" name="radio" value="1"><label for="radio-one"> 1</label>
 								</div>
 
-								<div class="radio-group">
+								<div class="filter-menu-radio-group">
 									<input id="radio-two" type="radio" name="radio" value="2"><label for="radio-two"> 2</label>
 								</div>
 							</div>
 
-							<div class="flex button-group">
-								<button type="submit">Submit</button>
-								<button type="reset">Clear</button>
+							<div class="filter-menu-button-group">
+								<div class="row">
+									<button type="submit">Submit</button>
+									<button type="reset">Clear</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="content-container">
-					<div class="flex">
+				<div class="main-content-container">
+					<div class="row">
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
-
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
-
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
-
-							<div class="item-title-container">
-								<a class="item-title">Title Title Title Title Title Title Title Title Title Title Title Title Title Title</a>
-							</div>
-
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
-
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
-
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title Title Title Title Title Title Title Title Title Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
-
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
-
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
-							</div>
-						</div>
-
-						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
-
-							<div class="item-title-container">
-								<a class="item-title">Title Title Title Title Title Title Title TitleTitle Title Title Title Title Title Title Title Title</a>
-							</div>
-
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 
 						<div class="item">
-							<div class="item-image-container">
-								<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
-								<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
-								<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
-							</div>
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
 
-							<div class="item-title-container">
-								<a class="item-title">Title Title Title Title Title Title</a>
-							</div>
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
 
-							<div class="item-button-container">
-								<a class="item-button" href="#">Love It</a>
-								<a class="item-button" href="#">Hate It</a>
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
+
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
+
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
+
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
+
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
+
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
+
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
+
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
+
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="col">
+								<div class="item-image-container">
+									<img class="item-image" src="https://via.placeholder.com/500" alt="Placeholder">
+									<a class="item-image-left-overlay" href="#"><img src="resources/img/hand-thumbs-down-fill.svg" alt="dislike"></a>
+									<a class="item-image-right-overlay" href="#"><img src="resources/img/hand-thumbs-up-fill.svg" alt="like"></a>
+								</div>
+
+								<div class="item-title-container">
+									<a class="item-title">Title</a>
+								</div>
+
+								<div class="item-button-container">
+									<a class="item-button" href="#">Love It</a>
+									<a class="item-button" href="#">Hate It</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -281,8 +309,8 @@
 		</main>
 
 		<footer>
-			<div class="flex">
-				<div class="language-select-container">
+			<div class="row">
+				<div class="footer-language-container">
 					<label for="language-select">Choose a language: </label>
 
 					<select name="language-select" id="language-select">
@@ -293,8 +321,8 @@
 					</select>
 				</div>
 
-				<div class="navigation">
-					<nav class="navigation">
+				<div class="footer-navigation-container">
+					<nav>
 						<a class="navigation-link" href="index.html">Home</a>
 						<a class="navigation-link" href="#">Link</a>
 						<a class="navigation-link" href="#">Link</a>
