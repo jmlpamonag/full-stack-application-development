@@ -141,7 +141,7 @@ main .main-filter-container .filter-menu .filter-menu-button-group {
   width: 100%;
   padding-top: 5rem;
 }
-main .main-filter-container .filter-menu .filter-menu-button-group button {
+main .main-filter-container .filter-menu .filter-menu-button-group input {
   margin-right: auto;
   width: 45%;
 }
