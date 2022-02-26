@@ -1,5 +1,8 @@
 # Assignment Two: From Layout to Webpage
 
+View the most recent published (publicly committed) content
+[here](https://muzzarellimj.github.io/full-stack-application-development/assignment/assignment-2/).
+
 ## Assignment Guidelines
 
 Our task in this assignment is to implement a responsive HTML page and the necessary CSS for a website designed 
