@@ -64,9 +64,20 @@ body
 		margin-bottom: 300px
 
 	.navigation-link
-		color: $black
 		padding: 0 1.5vw
 		text-decoration: none
+
+		&:link
+			color: $black
+
+		&:visited
+			color: yellow
+
+		&:hover
+			color: $white !important
+
+		&:active
+			border-bottom: $white solid
 
 		&-highlight
 			/* feature three of css preprocessor: @extend */
@@ -230,6 +241,18 @@ main
 					text-align: center
 					text-decoration: none
 					width: 40%
+
+					&:visited
+						background: $light
+						color: $black
+
+					&:hover
+						background: $white
+						color: $primary
+
+					&:active
+						background: $black
+						color: $white
 
 footer
 	background: $primary

@@ -32,9 +32,20 @@ body {
   }
 }
 body .navigation-link, body .navigation-link-highlight {
-  color: #000;
   padding: 0 1.5vw;
   text-decoration: none;
+}
+body .navigation-link:link, body .navigation-link-highlight:link {
+  color: #000;
+}
+body .navigation-link:visited, body .navigation-link-highlight:visited {
+  color: yellow;
+}
+body .navigation-link:hover, body .navigation-link-highlight:hover {
+  color: #FFF !important;
+}
+body .navigation-link:active, body .navigation-link-highlight:active {
+  border-bottom: #FFF solid;
 }
 body .navigation-link-highlight {
   /* feature three of css preprocessor: @extend */
@@ -210,6 +221,18 @@ main .main-content-container .item .item-button-container .item-button {
   text-align: center;
   text-decoration: none;
   width: 40%;
+}
+main .main-content-container .item .item-button-container .item-button:visited {
+  background: #f8f9fa;
+  color: #000;
+}
+main .main-content-container .item .item-button-container .item-button:hover {
+  background: #FFF;
+  color: #0d6efd;
+}
+main .main-content-container .item .item-button-container .item-button:active {
+  background: #000;
+  color: #FFF;
 }
 
 footer {
