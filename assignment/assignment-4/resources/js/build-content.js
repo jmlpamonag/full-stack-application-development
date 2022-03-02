@@ -314,7 +314,7 @@ function buildPageBasedPaginationIndex(page) {
 	parent.append(buildIndexCardElement(second, offset));
 
 	/* build the page-based pagination elements */
-	buildPageBasedPagination();
+	buildPageBasedPagination(page);
 }
 
 /**
@@ -322,16 +322,24 @@ function buildPageBasedPaginationIndex(page) {
  *
  * @author Robert Adams, adamsr15@mymail.nku.edu
  */
-function buildPageBasedPagination() {
+function buildPageBasedPagination(active) {
 	let pagination = document.getElementById('pagination');
 
 	for (let i = 1; i <= pageCount; i++) {
 		let item = document.createElement('li');
-		item.setAttribute('class', 'page-item');
+
+		if (i === parseInt(active)) {
+			item.setAttribute('class', 'page-item active');
+			item.setAttribute('aria-current', 'page');
+		} else {
+			item.setAttribute('class', 'page-item');
+		}
+
+
 
 		let link = document.createElement('a');
 		link.setAttribute('class', 'page-link');
-		link.setAttribute('href', `index-pagination-pages.html?page=${i}`)
+		link.setAttribute('href', `index-pagination-pages.html?page=${i}`);
 		link.innerText = `${i}`;
 
 		item.append(link);
