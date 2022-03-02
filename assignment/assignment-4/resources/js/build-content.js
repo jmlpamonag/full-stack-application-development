@@ -283,6 +283,37 @@ const animalPerPage = 2;
 const pageCount = Math.ceil(animals.length / animalPerPage);
 
 /**
+ * Build the index content - dynamically generated Bootstrap 'card' elements containing animal information and a link
+ * to the corresponding detail document - with respect to the current page to be displayed and append it to the
+ * corresponding index document. Note: this function is to be called independently to be invoked on page load, as well
+ * as within the callback function of an event listener.
+ *
+ * @param page	the page that should be displayed, between 1 and {@link pageCount}, inclusive.
+ */
+function buildPageBasedPaginationIndex(page) {
+	/* parse the input page value as an integer */
+	let pageValue = parseInt(page);
+
+	/* if the page value parsed from the query string is in any way invalid, default to page=1 */
+	if (isNaN(pageValue) || pageValue === 0 || pageValue === null || pageValue === undefined) {
+		pageValue = 1;
+	}
+
+	/* retrieve and store the parent element */
+	let parent = document.getElementById('index-parent');
+
+	/* calculate the index of the first element */
+	let firstIndex = (pageValue * animalPerPage) - 2;
+
+	/* calculate the index of the second element */
+	let secondIndex = (pageValue * animalPerPage) - 1;
+
+	/* build and append 'card' elements for each animal */
+	parent.append(buildIndexCardElement(animals[firstIndex], firstIndex));
+	parent.append(buildIndexCardElement(animals[secondIndex], secondIndex));
+}
+
+/**
  * Build a detail document of information pertaining to a particular animal selected from the index. The index value
  * is parsed from a value in the query string of the current URL. Note: this function is to be called independently
  * in the detail document to invoke this function on page load.
