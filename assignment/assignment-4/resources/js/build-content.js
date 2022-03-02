@@ -335,8 +335,6 @@ function buildPageBasedPagination(active) {
 			item.setAttribute('class', 'page-item');
 		}
 
-
-
 		let link = document.createElement('a');
 		link.setAttribute('class', 'page-link');
 		link.setAttribute('href', `index-pagination-pages.html?page=${i}`);
