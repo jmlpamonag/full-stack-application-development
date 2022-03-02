@@ -299,8 +299,8 @@ function buildPageBasedPaginationIndex(page) {
 		pageValue = 1;
 	}
 
-	/* retrieve and store the parent element */
-	let parent = document.getElementById('index-parent');
+	/* retrieve and store the index parent element */
+	let index = document.getElementById('index-parent');
 
 	/* calculate the index of the first element */
 	let firstIndex = (pageValue * animalPerPage) - 2;
@@ -309,8 +309,42 @@ function buildPageBasedPaginationIndex(page) {
 	let secondIndex = (pageValue * animalPerPage) - 1;
 
 	/* build and append 'card' elements for each animal */
-	parent.append(buildIndexCardElement(animals[firstIndex], firstIndex));
-	parent.append(buildIndexCardElement(animals[secondIndex], secondIndex));
+	index.append(buildIndexCardElement(animals[firstIndex], firstIndex));
+	index.append(buildIndexCardElement(animals[secondIndex], secondIndex));
+
+	/* retrieve and store the pagination parent element */
+	let pagination = document.getElementById('pagination-parent');
+
+	/* build and append the page-based pagination element */
+	pagination.append(buildPageBasedPagination());
+}
+
+/**
+ * Build a Bootstrap 'pagination' list element to be appended to the pagination parent container in the index document.
+ *
+ * @returns {HTMLUListElement}	a Bootstrap 'pagination' element.
+ */
+function buildPageBasedPagination() {
+	/* build a large, center-justified pagination list */
+	let pagination = document.createElement('ul');
+	pagination.setAttribute('class', 'pagination pagination-lg justify-content-center');
+
+	/* build a pagination item for each page that should exist */
+	for (let i = 1; i <= pageCount; i++) {
+		let item = document.createElement('li');
+		item.setAttribute('class', 'page-item');
+
+		let link = document.createElement('a');
+		link.setAttribute('class', 'page-link');
+		link.setAttribute('href', '');
+		link.innerText = `${i}`;
+
+		item.append(link);
+		pagination.append(item);
+	}
+
+	/* return the built pagination element */
+	return pagination;
 }
 
 /**
