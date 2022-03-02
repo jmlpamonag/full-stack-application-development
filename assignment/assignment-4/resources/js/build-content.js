@@ -272,6 +272,17 @@ function buildIndex() {
 }
 
 /**
+ * Declare the number of animals that should be displayed per page.
+ */
+const animalPerPage = 2;
+
+/**
+ * Calculate the number of pages that should be generated with respect to the length of {@link animals} and
+ * {@link animalPerPage}.
+ */
+const pageCount = Math.ceil(animals.length / animalPerPage);
+
+/**
  * Build a detail document of information pertaining to a particular animal selected from the index. The index value
  * is parsed from a value in the query string of the current URL. Note: this function is to be called independently
  * in the detail document to invoke this function on page load.
