@@ -288,7 +288,7 @@ function buildPageBasedPaginationIndex(page) {
 	/* if the query string did not include a valid page number, default to page=1 and set the URL accordingly */
 	if (page === 0 || page === null || page === undefined) {
 		page = 1;
-		window.location.href = 'index.html?page=1';
+		window.location.href = 'index-pagination-pages.html?page=1';
 	}
 
 	/* retrieve and store a reference to the parent element */
