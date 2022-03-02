@@ -359,6 +359,14 @@ function buildPageBasedPagination(active) {
 	return pagination;
 }
 
+/**
+ * Build the index content - dynamically generated Bootstrap 'card' elements containing animal information and a link
+ * to the corresponding detail document - with respect to the current page to be displayed and append it to the
+ * corresponding index document. Note: this function is to be called independently to be invoked on page load, as well
+ * as within the callback function of an event listener.
+ *
+ * @param	page – the page that should be displayed, between 1 and {@link pageCount}, inclusive.
+ */
 function buildLoadMorePaginationIndex(page) {
 	/* parse the input page value as an integer */
 	let pageValue = parseInt(page);
@@ -378,6 +386,16 @@ function buildLoadMorePaginationIndex(page) {
 	for (let i = 0; i <= lastIndex; i++) {
 		index.append(buildIndexCardElement(animals[i], i));
 	}
+
+	/* retrieve and store the 'load more' button */
+	let loadMore = document.getElementById('load-more');
+
+	/* on click, load the appropriate number of elements and update the page value that the button should point to */
+	loadMore.addEventListener('click', (event) => {
+		event.target.href = `?page=${pageValue + 1}`;
+
+		window.location.href = `?page=${pageValue}`;
+	});
 }
 
 /**
