@@ -291,22 +291,20 @@ const pageCount = Math.ceil(animals.length / animalPerPage);
  * @param page	the page that should be displayed, between 1 and {@link pageCount}, inclusive.
  */
 function buildPageBasedPaginationIndex(page) {
-	/* parse the input page value as an integer */
-	let pageValue = parseInt(page);
-
-	/* if the page value parsed from the query string is in any way invalid, default to page=1 */
-	if (isNaN(pageValue) || pageValue === 0 || pageValue === null || pageValue === undefined) {
-		pageValue = 1;
-	}
+	/* validate the page value */
+	page = validatePage(page);
 
 	/* retrieve and store the index parent element */
 	let index = document.getElementById('index-parent');
 
+	/* remove all existing children of the index parent element */
+	removeAllChildren(index);
+
 	/* calculate the index of the first element */
-	let firstIndex = (pageValue * animalPerPage) - 2;
+	let firstIndex = (page * animalPerPage) - 2;
 
 	/* calculate the index of the second element */
-	let secondIndex = (pageValue * animalPerPage) - 1;
+	let secondIndex = (page * animalPerPage) - 1;
 
 	/* build and append 'card' elements for each animal */
 	index.append(buildIndexCardElement(animals[firstIndex], firstIndex));
@@ -315,8 +313,11 @@ function buildPageBasedPaginationIndex(page) {
 	/* retrieve and store the pagination parent element */
 	let pagination = document.getElementById('pagination-parent');
 
+	/* remove all existing children of the pagination parent element */
+	removeAllChildren(pagination);
+
 	/* build and append the page-based pagination element */
-	pagination.append(buildPageBasedPagination(pageValue));
+	pagination.append(buildPageBasedPagination(page));
 }
 
 /**
@@ -331,24 +332,41 @@ function buildPageBasedPagination(active) {
 
 	/* build a pagination item for each page that should exist */
 	for (let i = 1; i <= pageCount; i++) {
+		/* build a pagination item */
 		let item = document.createElement('li');
 		item.setAttribute('class', 'page-item');
 
+		/* if the pagination item being built is the active item, set the 'active' attributes */
 		if (i === active) {
 			item.setAttribute('class', 'page-item active');
+			item.setAttribute('aria-current', 'true');
 		}
 
+		/* build a pagination link */
 		let link = document.createElement('a');
 		link.setAttribute('class', 'page-link');
 		link.setAttribute('href', '');
 		link.innerText = `${i}`;
 
+		/* when the pagination link is clicked... */
 		link.addEventListener('click', (event) => {
+			/* prevent default action, prompting page reload */
 			event.preventDefault();
 
-			let page = event.target.innerText;
+			/* construct a URLSearchParams object with the current URL query string */
+			let parameters = new URLSearchParams(window.location.search);
 
-			window.location.href = `?page=${page}`;
+			/* set the page value in the query string to the corresponding pagination item */
+			parameters.set('page', `${i}`);
+
+			/* build a new URL based on the current pathname and the newly defined query string */
+			let url = window.location.pathname + '?' + parameters.toString();
+
+			/* use the history api to update the query string without prompting a page refresh */
+			history.pushState(null, '', url);
+
+			/* and finally, rebuild the pagination system with the proper active element */
+			buildPageBasedPaginationIndex(i);
 		});
 
 		item.append(link);
@@ -396,6 +414,38 @@ function buildLoadMorePaginationIndex(page) {
 
 		window.location.href = `?page=${pageValue}`;
 	});
+}
+
+/**
+ * Validate a page value, which is parsed from the URL query string on page load or pagination interaction.
+ *
+ * @param page	the page value to be validated.
+ *
+ * @returns {number}	the validated page value.
+ */
+function validatePage(page) {
+	/* parse the input page value as an integer */
+	page = parseInt(page);
+
+	/* if the input page value is in any way invalid, default to 1 */
+	if (isNaN(page) || page === 0 || page === null || page === undefined) {
+		page = 1;
+	}
+
+	/* return the validated page value */
+	return page;
+}
+
+/**
+ * Remove any existing children elements of a specified parent element.
+ *
+ * @param parent	the parent element from which to remove children elements.
+ */
+function removeAllChildren(parent) {
+	/* remove the first child element of the parent element until such an element no longer exists */
+	while (parent.firstChild) {
+		parent.removeChild(parent.firstChild);
+	}
 }
 
 /**
