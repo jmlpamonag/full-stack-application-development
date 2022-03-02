@@ -29,6 +29,6 @@
 		<script src="resources/js/build-content.js"></script>
 
 		<!-- call buildIndex() from build-content.js to invoke on each page load -->
-		<script> buildIndex(); </script>
+		<script> buildPageBasedPaginationIndex(getAllUrlParams(window.location.href).page); </script>
 	</body>
 </html>

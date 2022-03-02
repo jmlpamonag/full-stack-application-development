@@ -272,6 +272,43 @@ function buildIndex() {
 }
 
 /**
+ * Declare the number of animals that should be shown on each page via the pagination system.
+ */
+const animalPerPage = 2;
+
+/**
+ * Build the index content - dynamically generated Bootstrap 'card' elements containing animal information and a link
+ * to a corresponding detail page and a page-based pagination system - and append it to the index document. Note: this
+ * function is called independently in the corresponding index document to invoke it on page load, as well as the
+ * effect of clicking one of the pagination buttons.
+ *
+ * @param page	the page value that, once on the page, will be passed via the pagination button clicked.
+ */
+function buildPageBasedPaginationIndex(page) {
+	/* if the query string did not include a valid page number, default to page=1 and set the URL accordingly */
+	if (page === 0 || page === null || page === undefined) {
+		page = 1;
+		window.location.href = 'index.html?page=1';
+	}
+
+	/* retrieve and store a reference to the parent element */
+	let parent = document.getElementById('index-parent');
+
+	/* calculate the offset: (page number * animals per page) - 1 to account for starting at 0 */
+	let offset = (page * animalPerPage) - 1;
+
+	/* retrieve and store the first animal at position of one before offset */
+	let first = animals[offset - 1];
+
+	/* retrieve and store the second animal at position of offset */
+	let second = animals[offset];
+
+	/* append the first and second animal to the parent element */
+	parent.append(buildIndexCardElement(first, offset - 1));
+	parent.append(buildIndexCardElement(second, offset));
+}
+
+/**
  * Build a detail document of information pertaining to a particular animal selected from the index. The index value
  * is parsed from a value in the query string of the current URL. Note: this function is to be called independently
  * in the detail document to invoke this function on page load.
