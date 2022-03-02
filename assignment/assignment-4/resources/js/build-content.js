@@ -277,18 +277,12 @@ function buildIndex() {
 const animalPerPage = 2;
 
 /**
- * Calculate the number of pages based on the number of animals available and the number of animals per page.
- */
-const pageCount = animals.length / animalPerPage;
-
-/**
  * Build the index content - dynamically generated Bootstrap 'card' elements containing animal information and a link
  * to a corresponding detail page and a page-based pagination system - and append it to the index document. Note: this
  * function is called independently in the corresponding index document to invoke it on page load, as well as the
  * effect of clicking one of the pagination buttons.
  *
  * @param page	the page value that, once on the page, will be passed via the pagination button clicked.
- * @author	Michael Muzzarelli, muzzarellm1@nku.edu
  */
 function buildPageBasedPaginationIndex(page) {
 	/* if the query string did not include a valid page number, default to page=1 and set the URL accordingly */
@@ -312,31 +306,6 @@ function buildPageBasedPaginationIndex(page) {
 	/* append the first and second animal to the parent element */
 	parent.append(buildIndexCardElement(first, offset - 1));
 	parent.append(buildIndexCardElement(second, offset));
-
-	/* build the page-based pagination elements */
-	buildPageBasedPagination();
-}
-
-/**
- * Build the page-based pagination elements with respect to {@link pageCount}.
- *
- * @author Robert Adams, adamsr15@mymail.nku.edu
- */
-function buildPageBasedPagination() {
-	let pagination = document.getElementById('pagination');
-
-	for (let i = 1; i <= pageCount; i++) {
-		let item = document.createElement('li');
-		item.setAttribute('class', 'page-item');
-
-		let link = document.createElement('a');
-		link.setAttribute('class', 'page-link');
-		link.setAttribute('href', `index-pagination-pages.html?page=${i}`)
-		link.innerText = `${i}`;
-
-		item.append(link);
-		pagination.append(item);
-	}
 }
 
 /**
