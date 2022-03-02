@@ -359,6 +359,27 @@ function buildPageBasedPagination(active) {
 	return pagination;
 }
 
+function buildLoadMorePaginationIndex(page) {
+	/* parse the input page value as an integer */
+	let pageValue = parseInt(page);
+
+	/* if the page value parsed from the query string is in any way invalid, default to page=1 */
+	if (isNaN(pageValue) || pageValue === 0 || pageValue === null || pageValue === undefined) {
+		pageValue = 1;
+	}
+
+	/* retrieve and store the index parent element */
+	let index = document.getElementById('index-parent');
+
+	/* calculate the index of the last element that should be built */
+	let lastIndex = (pageValue * animalPerPage) - 1;
+
+	/* build a Bootstrap 'card' element for each animal that should be displayed with respect to the page value */
+	for (let i = 0; i <= lastIndex; i++) {
+		index.append(buildIndexCardElement(animals[i], i));
+	}
+}
+
 /**
  * Build a detail document of information pertaining to a particular animal selected from the index. The index value
  * is parsed from a value in the query string of the current URL. Note: this function is to be called independently
