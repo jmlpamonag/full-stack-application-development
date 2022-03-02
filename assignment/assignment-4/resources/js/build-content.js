@@ -316,7 +316,7 @@ function buildPageBasedPaginationIndex(page) {
 	let pagination = document.getElementById('pagination-parent');
 
 	/* build and append the page-based pagination element */
-	pagination.append(buildPageBasedPagination());
+	pagination.append(buildPageBasedPagination(pageValue));
 }
 
 /**
@@ -324,7 +324,7 @@ function buildPageBasedPaginationIndex(page) {
  *
  * @returns {HTMLUListElement}	a Bootstrap 'pagination' element.
  */
-function buildPageBasedPagination() {
+function buildPageBasedPagination(active) {
 	/* build a large, center-justified pagination list */
 	let pagination = document.createElement('ul');
 	pagination.setAttribute('class', 'pagination pagination-lg justify-content-center');
@@ -334,10 +334,22 @@ function buildPageBasedPagination() {
 		let item = document.createElement('li');
 		item.setAttribute('class', 'page-item');
 
+		if (i === active) {
+			item.setAttribute('class', 'page-item active');
+		}
+
 		let link = document.createElement('a');
 		link.setAttribute('class', 'page-link');
 		link.setAttribute('href', '');
 		link.innerText = `${i}`;
+
+		link.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			let page = event.target.innerText;
+
+			window.location.href = `?page=${page}`;
+		});
 
 		item.append(link);
 		pagination.append(item);
