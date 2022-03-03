@@ -294,6 +294,9 @@ function buildPageBasedPaginationIndex(page) {
 	/* validate the page value */
 	page = validatePage(page);
 
+	/* update the page value in the query string */
+	modifyQueryString('page', page);
+
 	/* retrieve and store the index parent element */
 	let index = document.getElementById('index-parent');
 
@@ -380,6 +383,9 @@ function buildPageBasedPagination(active) {
 function buildInitialLoadMorePaginationIndex(page) {
 	/* validate the page value */
 	page = validatePage(page);
+
+	/* update the page value in the query string */
+	modifyQueryString('page', page);
 
 	/* retrieve and store the index parent element */
 	let index = document.getElementById('index-parent');
