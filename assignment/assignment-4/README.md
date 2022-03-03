@@ -1,5 +1,10 @@
 # Assignment Four: Adding JavaScript Events
 
+View the most recent published (publicly committed) page-based pagination implementation 
+[here](https://muzzarellimj.github.io/full-stack-application-development/assignment/assignment-4/index-pagination-pages.html),
+and 'load more' pagination implementation 
+[here](https://muzzarellimj.github.io/full-stack-application-development/assignment/assignment-4/index-pagination-load-more.html).
+
 ## Assignment Guidelines
 
 Our task in this assignment is to add pagination to the Kenton County Animal Shelter website created in
