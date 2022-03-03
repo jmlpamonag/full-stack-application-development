@@ -511,6 +511,11 @@ function validatePage(page) {
 		page = 1;
 	}
 
+	/* if the input page value is greater than the number of pages, default to the last page */
+	if (page > pageCount) {
+		page = pageCount;
+	}
+
 	/* return the validated page value */
 	return page;
 }
