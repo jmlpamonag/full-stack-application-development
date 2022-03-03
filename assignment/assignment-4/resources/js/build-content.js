@@ -353,17 +353,8 @@ function buildPageBasedPagination(active) {
 			/* prevent default action, prompting page reload */
 			event.preventDefault();
 
-			/* construct a URLSearchParams object with the current URL query string */
-			let parameters = new URLSearchParams(window.location.search);
-
-			/* set the page value in the query string to the corresponding pagination item */
-			parameters.set('page', `${i}`);
-
-			/* build a new URL based on the current pathname and the newly defined query string */
-			let url = window.location.pathname + '?' + parameters.toString();
-
-			/* use the history api to update the query string without prompting a page refresh */
-			history.pushState(null, '', url);
+			/* update the page value in the query string */
+			modifyQueryString('page', i);
 
 			/* and finally, rebuild the pagination system with the proper active element */
 			buildPageBasedPaginationIndex(i);
@@ -474,17 +465,8 @@ function buildLoadMorePagination(page) {
 			/* prevent default action, prompting page reload */
 			event.preventDefault();
 
-			/* construct a URLSearchParams object with the current URL query string */
-			let parameters = new URLSearchParams(window.location.search);
-
-			/* set the page value in the query string to the corresponding pagination item */
-			parameters.set('page', `${page + 1}`);
-
-			/* build a new URL based on the current pathname and the newly defined query string */
-			let url = window.location.pathname + '?' + parameters.toString();
-
-			/* use the history api to update the query string without prompting a page refresh */
-			history.pushState(null, '', url);
+			/* update the page value in the query string */
+			modifyQueryString('page', page + 1);
 
 			/* load more index content based on the current page value */
 			buildLatestLoadMorePaginationIndex(page + 1);
@@ -493,6 +475,27 @@ function buildLoadMorePagination(page) {
 
 	/* return the built button */
 	return button;
+}
+
+/**
+ * Utilise the [document history API]{@link https://developer.mozilla.org/en-US/docs/Web/API/History_API} to update the
+ * query string in the URL without prompting a page refresh.
+ *
+ * @param key		the query string key to be modified.
+ * @param value		the query string value to be modified.
+ */
+function modifyQueryString(key, value) {
+	/* construct a URLSearchParams object with the current URL query string */
+	let parameters = new URLSearchParams(window.location.search);
+
+	/* set a parameter of value 'key' equal to value 'value' */
+	parameters.set(key, value);
+
+	/* build a new URL based on the current pathname and the newly defined query string */
+	let url = window.location.pathname + '?' + parameters.toString();
+
+	/* use the history api to update the query string without prompting a page refresh */
+	history.pushState(null, '', url);
 }
 
 /**
