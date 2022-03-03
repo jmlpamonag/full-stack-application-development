@@ -378,42 +378,110 @@ function buildPageBasedPagination(active) {
 }
 
 /**
- * Build the index content - dynamically generated Bootstrap 'card' elements containing animal information and a link
- * to the corresponding detail document - with respect to the current page to be displayed and append it to the
- * corresponding index document. Note: this function is to be called independently to be invoked on page load, as well
- * as within the callback function of an event listener.
+ * Build the initial index content - dynamically generated Bootstrap 'card' elements containing animal information and
+ * a link to the corresponding detail document - with respect to the last element that should be built per the number
+ * of pages and number of animals per page, and append it to the index-pagination-load-more document. Note: this
+ * function is only meant to be called independently to be invoked on page load. It will remove any existing content
+ * prior to building any.
  *
  * @param	page – the page that should be displayed, between 1 and {@link pageCount}, inclusive.
  */
-function buildLoadMorePaginationIndex(page) {
-	/* parse the input page value as an integer */
-	let pageValue = parseInt(page);
-
-	/* if the page value parsed from the query string is in any way invalid, default to page=1 */
-	if (isNaN(pageValue) || pageValue === 0 || pageValue === null || pageValue === undefined) {
-		pageValue = 1;
-	}
+function buildInitialLoadMorePaginationIndex(page) {
+	/* validate the page value */
+	page = validatePage(page);
 
 	/* retrieve and store the index parent element */
 	let index = document.getElementById('index-parent');
 
-	/* calculate the index of the last element that should be built */
-	let lastIndex = (pageValue * animalPerPage) - 1;
+	/* calculate the index of the last element that should be displayed */
+	let lastIndex = (page * animalPerPage) - 1;
 
-	/* build a Bootstrap 'card' element for each animal that should be displayed with respect to the page value */
+	/* build a 'card' element for each animal up to and including lastIndex */
 	for (let i = 0; i <= lastIndex; i++) {
 		index.append(buildIndexCardElement(animals[i], i));
 	}
 
-	/* retrieve and store the 'load more' button */
-	let loadMore = document.getElementById('load-more');
+	/* retrieve and store the 'load more' button parent element */
+	let loadMore = document.getElementById('load-more-parent');
 
-	/* on click, load the appropriate number of elements and update the page value that the button should point to */
-	loadMore.addEventListener('click', (event) => {
-		event.target.href = `?page=${pageValue + 1}`;
+	/* build and append the 'load more' button to the parent element */
+	loadMore.append(buildLoadMorePagination(page));
+}
 
-		window.location.href = `?page=${pageValue}`;
+/**
+ * Build the latest index content - dynamically generated Bootstrap 'card' elements containing animal information and a
+ * link to the corresponding detail document - with respect to the two elements that should be built per the page
+ * number, and append it to the index-pagination-load-more document. Note: this function is only meant to be called as
+ * the callback function of the 'load more' button click listener; it will ignore any existing content and append any
+ * new content to the bottom of the page.
+ *
+ * @param page	the page that should be displayed, between 1 and {@link pageCount}, inclusive.
+ */
+function buildLatestLoadMorePaginationIndex(page) {
+	/* validate the page value */
+	page = validatePage(page);
+
+	/* retrieve and store the index parent element */
+	let index = document.getElementById('index-parent');
+
+	/* calculate the index of the first element */
+	let firstIndex = (page * animalPerPage) - 2;
+
+	/* calculate the index of the second element */
+	let secondIndex = (page * animalPerPage) - 1;
+
+	/* build and append 'card' elements for each animal */
+	index.append(buildIndexCardElement(animals[firstIndex], firstIndex));
+	index.append(buildIndexCardElement(animals[secondIndex], secondIndex));
+
+	/* retrieve and store the 'load more' button parent element */
+	let loadMore = document.getElementById('load-more-parent');
+
+	/* remove all existing children of the 'load more' parent element */
+	removeAllChildren(loadMore);
+
+	/* build and append the 'load more' button to the parent element */
+	loadMore.append(buildLoadMorePagination(page));
+}
+
+/**
+ * Build a Bootstrap 'btn-primary' button element to be appended to the 'load more' parent element, and add a click
+ * event listener to call {@link buildLatestLoadMorePaginationIndex(page)} to append more index content.
+ *
+ * @param page	the current page for reference of what page to load content for next.
+ *
+ * @returns {HTMLAnchorElement}		a Bootstrap 'btn-primary' button element.
+ */
+function buildLoadMorePagination(page) {
+	/* build a button element styled with Bootstrap 'btn-primary' and containing the text 'Load More' */
+	let button = document.createElement('a');
+	button.setAttribute('class', 'btn btn-primary col-8');
+	button.setAttribute('href', '');
+	button.innerText = 'Load More';
+
+	/* when the button is clicked... */
+	button.addEventListener('click', (event) => {
+		/* prevent default action, prompting page reload */
+		event.preventDefault();
+
+		/* construct a URLSearchParams object with the current URL query string */
+		let parameters = new URLSearchParams(window.location.search);
+
+		/* set the page value in the query string to the corresponding pagination item */
+		parameters.set('page', `${page + 1}`);
+
+		/* build a new URL based on the current pathname and the newly defined query string */
+		let url = window.location.pathname + '?' + parameters.toString();
+
+		/* use the history api to update the query string without prompting a page refresh */
+		history.pushState(null, '', url);
+
+		/* load more index content based on the current page value */
+		buildLatestLoadMorePaginationIndex(page + 1);
 	});
+
+	/* return the built button */
+	return button;
 }
 
 /**
