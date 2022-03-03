@@ -446,39 +446,50 @@ function buildLatestLoadMorePaginationIndex(page) {
 
 /**
  * Build a Bootstrap 'btn-primary' button element to be appended to the 'load more' parent element, and add a click
- * event listener to call {@link buildLatestLoadMorePaginationIndex(page)} to append more index content.
+ * event listener to call {@link buildLatestLoadMorePaginationIndex(page)} to append more index content. If {@link page}
+ * is equal to {@link pageCount}, meaning the user has reached the last page, disable the button to prevent further
+ * loading.
  *
  * @param page	the current page for reference of what page to load content for next.
  *
  * @returns {HTMLAnchorElement}		a Bootstrap 'btn-primary' button element.
  */
 function buildLoadMorePagination(page) {
-	/* build a button element styled with Bootstrap 'btn-primary' and containing the text 'Load More' */
+	/* build a button element containing the text 'Load More' */
 	let button = document.createElement('a');
-	button.setAttribute('class', 'btn btn-primary col-8');
-	button.setAttribute('href', '');
 	button.innerText = 'Load More';
 
-	/* when the button is clicked... */
-	button.addEventListener('click', (event) => {
-		/* prevent default action, prompting page reload */
-		event.preventDefault();
+	/* if we are currently on the final page, build a disabled 'btn-secondary' button */
+	if (page === pageCount) {
+		button.setAttribute('class', 'btn btn-secondary col-8');
+		button.setAttribute('disabled', '');
 
-		/* construct a URLSearchParams object with the current URL query string */
-		let parameters = new URLSearchParams(window.location.search);
+	/* otherwise, build a 'btn-primary' button */
+	} else {
+		button.setAttribute('class', 'btn btn-primary col-8');
+		button.setAttribute('href', '');
 
-		/* set the page value in the query string to the corresponding pagination item */
-		parameters.set('page', `${page + 1}`);
+		/* when the button is clicked... */
+		button.addEventListener('click', (event) => {
+			/* prevent default action, prompting page reload */
+			event.preventDefault();
 
-		/* build a new URL based on the current pathname and the newly defined query string */
-		let url = window.location.pathname + '?' + parameters.toString();
+			/* construct a URLSearchParams object with the current URL query string */
+			let parameters = new URLSearchParams(window.location.search);
 
-		/* use the history api to update the query string without prompting a page refresh */
-		history.pushState(null, '', url);
+			/* set the page value in the query string to the corresponding pagination item */
+			parameters.set('page', `${page + 1}`);
 
-		/* load more index content based on the current page value */
-		buildLatestLoadMorePaginationIndex(page + 1);
-	});
+			/* build a new URL based on the current pathname and the newly defined query string */
+			let url = window.location.pathname + '?' + parameters.toString();
+
+			/* use the history api to update the query string without prompting a page refresh */
+			history.pushState(null, '', url);
+
+			/* load more index content based on the current page value */
+			buildLatestLoadMorePaginationIndex(page + 1);
+		});
+	}
 
 	/* return the built button */
 	return button;
