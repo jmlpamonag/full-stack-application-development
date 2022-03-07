@@ -32,6 +32,7 @@ const user = [
 		/* third: account identification */
 		"email": "",
 		"password": "",
+		"type": "",
 		"avatar": "",
 
 		/* fourth: optional authorID */
