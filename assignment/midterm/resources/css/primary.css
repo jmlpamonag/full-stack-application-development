@@ -1,4 +1,25 @@
 /* The 'Primary' theme will serve as the collection of stylesheet documents to be used in the first iteration */
 /* base color palette, as predefined by Research Directs */
+header {
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+header .navbar .navbar-brand-image {
+  height: 5vh;
+}
+header .navbar .nav-link {
+  color: #133960;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+header .navbar .btn-primary {
+  background-color: #133960;
+  border: none;
+  color: #FFFFFF;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
 
 /*# sourceMappingURL=primary.css.map */
