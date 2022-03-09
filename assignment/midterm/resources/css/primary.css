@@ -9,17 +9,15 @@ header .navbar .navbar-brand-image {
 }
 header .navbar .nav-link {
   color: #133960;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: 500;
   font-size: 1.15rem;
+  font-weight: 350;
 }
 header .navbar .btn-primary {
   background-color: #133960;
   border: none;
   color: #FFFFFF;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+  font-weight: 350;
 }
 
 /*# sourceMappingURL=primary.css.map */
