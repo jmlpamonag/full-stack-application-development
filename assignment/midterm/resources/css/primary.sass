@@ -3,6 +3,9 @@
 /* base color palette, as predefined by Research Directs */
 $color-palette: ('primary': #133960, 'secondary': #438874, 'tertiary': #A6A6A6, 'black': #000000, 'white': #FFFFFF)
 
+body
+	font-weight: 350
+
 header
 	background: map-get($color-palette, 'white')
 	box-shadow: 0 2px 10px rgb(0 0 0 / 25%)
@@ -14,11 +17,9 @@ header
 		.nav-link
 			color: map-get($color-palette, 'primary')
 			font-size: 1.15rem
-			font-weight: 350
 
 		.btn-primary
 			background-color: map-get($color-palette, 'primary')
 			border: none
 			color: map-get($color-palette, 'white')
 			font-size: 1.15rem
-			font-weight: 350
