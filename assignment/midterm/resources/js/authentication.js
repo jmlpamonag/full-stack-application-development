@@ -1,26 +1,30 @@
 /**
- * A rudimentary user authentication module to be utilised in the first iteration of PodScholar.
+ * A rudimentary user authentication module to be utilised in the first iteration of PodScholar. This authentication
+ * process utilises the [localStorage]{@link https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage}
+ * browser property to either set or check the value of the 'authenticated' key.
  *
- * @module authentication
  * @author Michael Muzzarelli, muzzarellm1@nku.edu
  */
+const name = 'authentication';
 
 /**
- * A variable to check if the user has been authenticated.
+ * Set the value of the local storage 'authenticated' key.
  *
- * @type {boolean}	true if the user has been authenticated, and false if not.
- */
-let authenticated = false;
-
-/**
- * Set the value of the authentication variable, thus setting the status of user authentication.
- *
- * @param value		true if the user should be authenticated, false if the user should not bne.
+ * @param value		true if the user should be authenticated, false if they should not.
  */
 function setAuthentication(value) {
 	if (typeof value != 'boolean') {
 		return console.error('The provided value of setAuthentication(boolean) must be of type boolean!');
 	}
 
-	authenticated = value;
+	localStorage.setItem('authenticated', `${value}`);
+}
+
+/**
+ * Check the value of the local storage 'authenticated' key.
+ *
+ * @returns {boolean}	true if the user is authenticated, and false if not.
+ */
+function checkAuthentication() {
+	return localStorage.getItem('authenticated') === 'true';
 }
