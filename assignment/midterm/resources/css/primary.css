@@ -115,4 +115,10 @@ footer .footer-link:hover {
   }
 }
 
+@media screen and (min-width: 576px) {
+  .discover main {
+    height: 77.5vh;
+  }
+}
+
 /*# sourceMappingURL=primary.css.map */
