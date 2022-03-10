@@ -32,8 +32,8 @@ footer {
   background: #133960;
   height: 15vh;
 }
-footer .footer-brand .footer-brand-image {
-  height: 10vh;
+footer .col-sm-4 {
+  padding-left: 7.5%;
 }
 footer .footer-heading {
   color: #FFFFFF;
