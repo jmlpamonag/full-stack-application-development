@@ -60,6 +60,10 @@ form .form-check a:hover {
 form .btn-primary {
   font-weight: 500;
 }
+form .form-textarea {
+  height: 6rem !important;
+  resize: none;
+}
 
 footer {
   background: #133960;
