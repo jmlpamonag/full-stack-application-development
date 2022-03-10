@@ -5,7 +5,6 @@
  *
  * @author Michael Muzzarelli, muzzarellm1@nku.edu
  */
-const name = 'authentication';
 
 /**
  * Set the value of the local storage 'authenticated' key.

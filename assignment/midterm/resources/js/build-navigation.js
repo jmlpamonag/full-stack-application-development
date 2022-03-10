@@ -2,10 +2,8 @@
  * A module utilised in the dynamic building of navigation content, which is based on the value of the local storage
  * 'authenticated' key.
  *
- * @module build-navigation
  * @author Michael Muzzarelli, muzzarellm1@nku.edu
  */
-const name = 'build-navigation';
 
 /**
  * Build the dynamic navigation content based on the 'authenticated' value: if the value is true, build a link to an
