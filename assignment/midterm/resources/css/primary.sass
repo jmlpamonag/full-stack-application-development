@@ -5,10 +5,12 @@ $color-palette: ('primary': #133960, 'secondary': #438874, 'tertiary': #A6A6A6, 
 
 body
 	font-weight: 350
+	overflow-x: hidden
 
 header
 	background: map-get($color-palette, 'white')
 	box-shadow: 0 2px 10px rgb(0 0 0 / 25%)
+	height: 7.5vh
 
 	.navbar
 		.navbar-brand-image
@@ -23,3 +25,34 @@ header
 			border: none
 			color: map-get($color-palette, 'white')
 			font-size: 1.15rem
+
+main
+	height: 77.5vh
+
+footer
+	background: map-get($color-palette, 'primary')
+	height: 15vh
+
+	.footer-brand
+		.footer-brand-image
+			height: 10vh
+
+	.footer-heading
+		color: map-get($color-palette, 'white')
+		font-size: 1rem
+		font-weight: 500
+		padding-bottom: 0.4rem
+
+	.footer-item
+		padding: 0.4rem 0
+
+	.bi
+		padding-right: 0.5rem
+
+	.footer-link
+		color: map-get($color-palette, 'white')
+		font-size: 0.9rem
+		text-decoration: none
+
+		&:hover
+			text-decoration-line: underline
