@@ -15,6 +15,19 @@ body {
   border: none;
   color: #FFFFFF;
 }
+.btn-primary:hover {
+  background: #438874;
+}
+
+.inline-link {
+  color: #133960;
+  font-weight: 500;
+  text-decoration: none;
+}
+.inline-link:hover {
+  color: #133960;
+  text-decoration: underline;
+}
 
 /* class styles */
 header {

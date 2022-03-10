@@ -16,6 +16,18 @@ body
 	border: none
 	color: map-get($color-palette, 'white')
 
+	&:hover
+		background: map-get($color-palette, 'secondary')
+
+.inline-link
+	color: map-get($color-palette, 'primary')
+	font-weight: 500
+	text-decoration: none
+
+	&:hover
+		color: map-get($color-palette, 'primary')
+		text-decoration: underline
+
 /* class styles */
 header
 	background: map-get($color-palette, 'white')
