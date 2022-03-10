@@ -97,4 +97,13 @@ footer .footer-link:hover {
   text-decoration-line: underline;
 }
 
+.about .container-fluid {
+  padding: 0 10vw;
+}
+@media screen and (min-width: 1320px) {
+  .about .container-fluid {
+    padding: 0 20vw;
+  }
+}
+
 /*# sourceMappingURL=primary.css.map */
