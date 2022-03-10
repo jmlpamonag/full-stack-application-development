@@ -60,3 +60,7 @@ const author = [
 		"about": ""
 	}
 ]
+
+const category = {
+	"categories": [ ]
+}
