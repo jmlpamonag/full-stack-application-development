@@ -8,6 +8,14 @@ body
 	font-weight: 350
 	overflow-x: hidden
 
+.one-page-main
+	height: 77.5vh
+
+.btn-primary
+	background-color: map-get($color-palette, 'primary')
+	border: none
+	color: map-get($color-palette, 'white')
+
 /* class styles */
 header
 	background: map-get($color-palette, 'white')
@@ -23,14 +31,22 @@ header
 			font-size: 1.15rem
 
 		.btn-primary
-			background-color: map-get($color-palette, 'primary')
-			border: none
-			color: map-get($color-palette, 'white')
 			font-size: 1.15rem
 
-main
-	@media screen and (min-width: 576px)
-		min-height: 77.5vh
+form
+	.form-check
+		font-size: 0.8rem
+
+		a
+			color: map-get($color-palette, 'primary')
+			font-weight: 500
+			text-decoration: none
+
+			&:hover
+				text-decoration-line: underline
+
+	.btn-primary
+		font-weight: 500
 
 footer
 	background: map-get($color-palette, 'primary')
