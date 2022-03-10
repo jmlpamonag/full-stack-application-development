@@ -13,11 +13,26 @@ function buildNavigation() {
 	let navigation = document.getElementById('navbar-collapse');
 
 	if (checkAuthentication()) {
+		let container = buildNavigationContainer('ms-auto me-3');
+
+		let signOut = buildNavigationItem('Sign Out', 'index.html');
+		signOut.addEventListener('click', () => {
+			setAuthentication(false);
+		});
+
+		container.append(signOut);
+
+		navigation.append(container);
 		navigation.append(buildNavigationButton('Account', 'account.html', 'me-5 py-3 px-4'));
 	} else {
 		let container = buildNavigationContainer('ms-auto me-3');
 
-		container.append(buildNavigationItem('Sign In', 'sign-in.html'));
+		let signIn = buildNavigationItem('Sign In', 'index.html');
+		signIn.addEventListener('click', () => {
+			setAuthentication(true);
+		});
+
+		container.append(signIn);
 
 		navigation.append(container);
 		navigation.append(buildNavigationButton('Register', 'register.html', 'me-5 py-3 px-4'));
