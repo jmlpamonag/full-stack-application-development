@@ -12,6 +12,7 @@ const podcast = [
 		"publicationJournal": "",
 		"publicationDate": "",
 		"publicationDOI": "",
+		"publicationContributors": [ "" ],
 
 		/* fourth: organizational identification */
 		"category": "",
