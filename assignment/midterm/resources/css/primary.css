@@ -120,5 +120,8 @@ footer .footer-link:hover {
     height: 77.5vh;
   }
 }
+.discover .content-heading {
+  font-size: 1.75rem;
+}
 
 /*# sourceMappingURL=primary.css.map */
