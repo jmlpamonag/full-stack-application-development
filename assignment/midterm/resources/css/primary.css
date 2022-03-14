@@ -117,7 +117,7 @@ footer .footer-link:hover {
 
 @media screen and (min-width: 576px) {
   .discover main {
-    height: 77.5vh;
+    min-height: 77.5vh;
   }
 }
 .discover .content-heading {
