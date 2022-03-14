@@ -4,6 +4,7 @@
  * browser property to either set or check the value of the 'authenticated' key.
  *
  * @author Michael Muzzarelli, muzzarellm1@nku.edu
+ * @author Robert Adams, adamsr15@mymail.nku.edu
  */
 
 /**
@@ -13,8 +14,10 @@
  */
 function setAuthentication(value) {
 	if (typeof value != 'boolean') {
-		return console.error('The provided value of setAuthentication(boolean) must be of type boolean!');
+		return console.error('The provided value of setAuthentication(value) must be of type boolean!');
 	}
+
+	value === true ? localStorage.setItem('userId', 'u00000000') : localStorage.removeItem('userId');
 
 	localStorage.setItem('authenticated', `${value}`);
 }
