@@ -7,7 +7,7 @@ body {
 }
 
 .one-page-main {
-  height: 77.5vh;
+  min-height: 77.5vh;
 }
 
 .btn-primary {
@@ -122,6 +122,11 @@ footer .footer-link:hover {
 }
 .discover .content-heading {
   font-size: 1.75rem;
+}
+
+.upload .form-textarea {
+  height: 7.5rem !important;
+  resize: none;
 }
 
 /*# sourceMappingURL=primary.css.map */
