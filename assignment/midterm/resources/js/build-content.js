@@ -1,8 +1,8 @@
 /**
- * Build the dynamic discover page content: filter menu options.
+ * Build the dynamic discover page content: the filter menu category selection and category content sections.
  */
 async function buildDiscover() {
-	await buildFilterCategoryOptions();
+	await buildCategorySelection('filter-category')
 
 	await buildContentSectionByCategory('Computer Science');
 	await buildContentSectionByCategory('Environmental Science');
@@ -10,20 +10,35 @@ async function buildDiscover() {
 }
 
 /**
- * Retrieve the available categories from the 'category' JSON document and parse each value as an option of the
- * 'category' selection dropdown in the filter menu.
+ * Retrieve the category document and return the `categories` array within.
+ *
+ * @returns {Promise<Array>}	the `categories` array.
  */
-async function buildFilterCategoryOptions() {
-	let data = await retrieveCategoryDocument();
-	let list = document.getElementById('filter-category');
+async function buildCategoryOptions() {
+	let document = await retrieveCategoryDocument();
 
-	data.categories.forEach(category => {
+	return document.categories;
+}
+
+/**
+ * Build and append a series of {@link HTMLOptionElement} elements to a parent {@link HTMLSelectElement} element.
+ *
+ * @param parent	a parent {@link HTMLSelectElement} element.
+ *
+ * @returns {Promise<void>}		append the generated {@link HTMLOptionElement} elements to the {@link HTMLSelectElement}
+ * parent element.
+ */
+async function buildCategorySelection(parent) {
+	let categories = await buildCategoryOptions();
+	let parentElement = document.getElementById(parent);
+
+	categories.forEach(category => {
 		let option = document.createElement('option');
 
 		option.setAttribute('value', category);
 		option.innerText = category;
 
-		list.append(option);
+		parentElement.append(option);
 	});
 }
 
@@ -113,5 +128,3 @@ function buildPodcastCard(podcast) {
 
 	return container;
 }
-
-buildDiscover().then();
