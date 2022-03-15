@@ -39,6 +39,26 @@ async function retrieveAuthorDocument() {
 }
 
 /**
+ * Retrieve a particular author from the author document with the provided unique identifier (UID).
+ *
+ * @param id	the UID (field `id.author`) of the requested author.
+ *
+ * @returns {Promise<JSON>}		the corresponding JSON object should it exist, or null if it does not.
+ */
+async function retrieveAuthor(id) {
+	let document = await retrieveAuthorDocument();
+	let match = null;
+
+	document.forEach(object => {
+		if (object.id.author === id) {
+			match = object;
+		}
+	});
+
+	return match;
+}
+
+/**
  * Retrieve the document stored at {@link CATEGORY_BLOB}.
  *
  * @returns {Promise<JSON>}		the data within the document, parsed as JSON.
@@ -57,12 +77,52 @@ async function retrievePodcastDocument() {
 }
 
 /**
+ * Retrieve a particular podcast from the podcast document with the provided unique identifier (UID).
+ *
+ * @param id	the UID (field `id.podcast`) of the requested podcast.
+ *
+ * @returns {Promise<JSON>}		the corresponding JSON object should it exist, or null if it does not.
+ */
+async function retrievePodcast(id) {
+	let document = await retrievePodcastDocument();
+	let match = null;
+
+	document.forEach(object => {
+		if (object.id.podcast === id) {
+			match = object;
+		}
+	});
+
+	return match;
+}
+
+/**
  * Retrieve the document stored at {@link USER_BLOB}.
  *
  * @returns {Promise<JSON>}		the data within the document, parsed as JSON.
  */
 async function retrieveUserDocument() {
 	return await retrieve(USER_BLOB);
+}
+
+/**
+ * Retrieve a particular user from the user document with the provided unique identifier (UID).
+ *
+ * @param id	the UID (field `id.user`) of the requested user.
+ *
+ * @returns {Promise<JSON>}		the corresponding JSON object should it exist, or null if it does not.
+ */
+async function retrieveUser(id) {
+	let document = await retrieveUserDocument();
+	let match = null;
+
+	document.forEach(object => {
+		if (object.id.user === id) {
+			match = object;
+		}
+	});
+
+	return match;
 }
 
 /**
