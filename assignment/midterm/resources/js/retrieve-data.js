@@ -143,3 +143,69 @@ async function retrieve(id) {
 		console.log(error);
 	}
 }
+
+/**
+ * Retrieve a particular user from the user document with the provided unique identifier (UID).
+ *
+ * @param id	the UID (field `id.user`) of the requested author.
+ *
+ * @returns {Promise<JSON>}		the corresponding JSON object should it exist, or null if it does not.
+*/
+ async function retrieveUsertbyAuthorId(id) {
+	let document = await retrieveUserDocument();
+	let match = null;
+
+	document.forEach(object => {
+		if (object.id.author === id) {
+			match = object;
+		}
+	});
+
+	return match;
+}
+
+/**
+ * Function provided by Dr. Caporusso to parse query string values.
+ *
+ * @param url	the URL to be parsed.
+ *
+ * @returns {{}}	an array of parsed values.
+*/
+function getAllUrlParams(url) {
+	var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+	var obj = {};
+
+	if (queryString) {
+		queryString = queryString.split('#')[0];
+		var arr = queryString.split('&');
+
+		for (var i = 0; i < arr.length; i++) {
+			var a = arr[i].split('=');
+			var paramName = a[0];
+			var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+			if (paramName.match(/\[(\d+)]$/)) {
+				var key = paramName.replace(/\[(\d+)?/, '');
+				if (!obj[key]) obj[key] = [];
+
+				if (paramName.match(/\[\d+$/)) {
+					var index = /\[(\d+)/.exec(paramName)[1];
+					obj[key][index] = paramValue;
+				} else {
+					obj[key].push(paramValue);
+				}
+			} else {
+				if (!obj[paramName]) {
+					obj[paramName] = paramValue;
+				} else if (obj[paramName] && typeof obj[paramName] === 'string') {
+					obj[paramName] = [obj[paramName]];
+					obj[paramName].push(paramValue);
+				} else {
+					obj[paramName].push(paramValue);
+				}
+			}
+		}
+	}
+
+	return obj;
+}
