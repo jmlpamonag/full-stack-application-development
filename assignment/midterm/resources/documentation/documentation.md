@@ -20,3 +20,15 @@ on the site.
 The homepage is more of a landing page and serves as the initial view when a user visits the site. This view offers a 
 short placeholder description of the site and button on the left, as well as a simple illustration representing an 
 individual interactive with a mobile audio content platform.
+
+### [Discover](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/discover.html)
+
+This is the starting point for finding the majority of the content on the platform. To the left is a sticky menu with
+options to filter displayed content by keyword, author, or journal, as well as by category, a list which is generated
+from a JSON document containing [available categories](https://jsonblob.com/951604363324047360). To the right is a 
+content pane wherein podcast data is displayed in Bootstrap [card](https://getbootstrap.com/docs/5.1/components/card/)
+elements and initially displayed in rows with section headers pertaining to the corresponding category. Each card 
+contains the podcast title and links to the corresponding author and podcast detail pages, all of which are pulled
+from JSON documents containing [registered authors](https://jsonblob.com/950254564695883776) and 
+[published podcasts](https://jsonblob.com/950251742357110784). This view could be extended to display and organize 
+content by the filter option values, distinct user curation, date of release, or popularity.
