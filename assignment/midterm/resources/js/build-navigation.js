@@ -23,11 +23,11 @@ function buildNavigation() {
 		container.append(signOut);
 
 		navigation.append(container);
-		navigation.append(buildNavigationButton('Account', 'account.html', 'me-5 py-3 px-4'));
+		navigation.append(buildNavigationButton('Account', 'user.html', 'me-5 py-3 px-4'));
 	} else {
 		let container = buildNavigationContainer('ms-auto me-3');
 
-		let signIn = buildNavigationItem('Sign In', 'index.html');
+		let signIn = buildNavigationItem('Sign In', 'sign-in.html');
 		signIn.addEventListener('click', () => {
 			setAuthentication(true);
 		});
