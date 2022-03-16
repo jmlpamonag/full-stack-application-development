@@ -53,10 +53,10 @@ async function buildContentSectionByCategory(category) {
 	let podcasts = await retrievePodcastDocument();
 
 	let row = document.createElement('div');
-	row.setAttribute('class', 'row p-2');
+	row.setAttribute('class', 'row p-3');
 
 	let heading = document.createElement('h1');
-	heading.setAttribute('class', 'display-6 pt-5 content-heading');
+	heading.setAttribute('class', 'display-6 pt-2 content-heading');
 
 	row.append(heading);
 
@@ -96,7 +96,7 @@ async function buildContentSectionByCategory(category) {
  */
 function buildPodcastCard(podcast) {
 	let container = document.createElement('div');
-	container.setAttribute('class', 'col-12 col-sm-6 col-xl-4 col-xxl-2 p-3');
+	container.setAttribute('class', 'col-12 col-md-6 col-xl-4');
 
 	let card = document.createElement('div');
 	card.setAttribute('class', 'card');
@@ -465,7 +465,7 @@ async function buildPodcast(podcastID) {
 	let podcastPublicationDoiElement = document.getElementById('doi-of-research-document-value');
 	let podcastPublicationDateElement = document.getElementById('date-of-research-document-value');
 	let podcastCategorizationCategoryElement = document.getElementById('category-of-research-document-value');
-	let podcastCategorizationKeywordsElement = document.getElementById('keywords-of-research-document-value');;
+	let podcastCategorizationKeywordsElement = document.getElementById('keywords-of-research-document-value');
 
 
 
