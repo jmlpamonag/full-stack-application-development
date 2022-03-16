@@ -7,7 +7,7 @@
 		},
 
 		"content": {
-			"audio": "https://www.free-stock-music.com/music/mbb-jv-saxx-feel-it.mp3",
+			"audio": "resources/mp3/ron-gelinas-chillout-lounge-relief.mp3",
 			"title": "Improved PIN Input for the Visually Impaired",
 			"description": "A new method for improving the trade-off between security and accessibility in PIN-based authentication systems and a solution that aims at minimizing the threats posed by malicious agents while maintaining a low level of complexity for the user."
 		},
@@ -32,7 +32,7 @@
 		},
 
 		"content": {
-			"audio": "https://www.free-stock-music.com/music/mbb-jv-saxx-feel-it.mp3",
+			"audio": "resources/mp3/ron-gelinas-chillout-lounge-relief.mp3",
 			"title": "Internet of Things: Context Sharing Tradeoffs",
 			"description": "Emerging IoT applications require devices to share information about their context with one another. However, as each IoT device has different capabilities, it may also have different priorities with respect to sharing context with nearby devices."
 		},
@@ -57,7 +57,7 @@
 		},
 
 		"content": {
-			"audio": "https://www.free-stock-music.com/music/mbb-jv-saxx-feel-it.mp3",
+			"audio": "resources/mp3/ron-gelinas-chillout-lounge-relief.mp3",
 			"title": "Exercise and Disease Prevention",
 			"description": "Research has shown that monitoring exercise and physical activity with wearable technology can improve health outcomes."
 		},
