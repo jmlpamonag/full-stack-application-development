@@ -245,7 +245,7 @@ async function buildUserProfile(id) {
 						authorCuration.append(buildAuthorCard(user));
 					}
 				});
-		});
+			});
 	});
 
 	/* build third row: favorited podcasts */
@@ -266,7 +266,7 @@ async function buildUserProfile(id) {
 						podcastCuration.append(buildPodcastCard(podcast));
 					}
 				});
-		});
+			});
 	});
 
 	container.append(header, authorCuration, podcastCuration);
@@ -310,4 +310,134 @@ function buildAuthorCard(author) {
 	container.append(card);
 
 	return container;
+}
+
+/**
+ * Build the dynamic author profile page content
+*/
+async function buildAuthorProfile(authorID) {
+
+	/* Retrieve JSON for Author */
+	let authorJSON = await retrieveAuthor(authorID).then(result => { return result; });
+
+	/* Retrieve JSON for Author's User Details */
+	let userJSON = await retrieveUsertbyAuthorId(authorID).then(result => { return result; });
+
+	/* Create Author Profile Section */
+	buildAuthorProfileDetails(userJSON, authorJSON);
+
+	/* Create Author's Podcast Feed Section*/
+	buildPodcastFeed(authorJSON.work.creator);
+}
+
+/**
+ * Build the author profile element with respect to a particular author and corresponding data attributes.
+ *
+ * @param userDetails	the JSON file that contains data for the user details
+ *
+ * @also 
+ * 
+ * @param  authorDetails the JSON file that contains data for the author details
+ * 
+ * @returns {HTMLDivElement}	a built 'author-profile-details' element.
+ */
+ function buildAuthorProfileDetails(userDetails, authorDetails) {
+
+	/* First Row - Heading*/ 
+	let headerRow = document.createElement('div');
+	headerRow.setAttribute('class', 'row p-2');
+
+	let heading = document.createElement('h1');
+	heading.setAttribute('class', 'display-6 pt-5 content-heading');
+	heading.innerText = "Author Profile"
+
+	let divider = document.createElement('hr');
+
+	headerRow.append(heading, divider);
+
+	/*Second Row - Author Details*/
+	let authorDetailsRow = document.createElement('div');
+	authorDetailsRow.setAttribute('class', 'row p-2');
+
+	let avatarColumn = document.createElement('div');
+	avatarColumn.setAttribute('class', 'col-6 col-lg-4 col-xl-6');
+
+	let avatar = document.createElement('img');
+	avatar.setAttribute('src', userDetails.profile.avatar);
+	avatar.setAttribute('class', 'mx-2')
+
+	avatar.style.borderRadius ="500px";
+	avatar.style.width = "200px";
+
+	avatarColumn.append(avatar);
+
+	let authorInformationColumn = document.createElement('div');
+	authorInformationColumn.setAttribute('class', 'col-6 col-lg-8 col-xl-6 pt-6');
+	
+	let name = document.createElement('p');
+	name.innerHTML = "<strong> Name: </strong>" + userDetails.name.first + " " + userDetails.name.last;
+
+	let organization = document.createElement('p');
+	organization.innerHTML = "<strong> Organization: </strong>" + authorDetails.institution.organization;
+
+	let title = document.createElement('p');
+	title.innerHTML = "<strong> Title: </strong>" + authorDetails.institution.title;
+
+	let email = document.createElement('p');
+	email.innerHTML = "<strong> Email: </strong>" + userDetails.account.email;
+
+	authorInformationColumn.append(name, organization, title, email);
+
+	authorDetailsRow.append(avatarColumn, authorInformationColumn);
+
+	/*Third Row - Author Description*/ 
+	let authorDescriptionRow = document.createElement('div');
+	authorDescriptionRow.setAttribute('class', 'row p-2');
+
+	let subHeading = document.createElement('h3');
+	subHeading.setAttribute('class', 'pt-2');
+	subHeading.innerText = "About the Author"
+
+	let about = document.createElement('p');
+	about.innerText = authorDetails.profile.about;
+
+	authorDescriptionRow.append(subHeading, about);
+
+	/*Append*/
+	document.getElementById('author-profile-details').append(headerRow, authorDetailsRow, authorDescriptionRow);
+}
+
+/**
+ * Build the podcast feed element with repect to a particular author's podcast list.
+ *
+ * @param userPodcasts	the JSON file that contains data for the user podcasts.
+ * 
+ * @returns {HTMLDivElement}	a built 'author-profile-podcast-feed' element.
+*/
+ async function buildPodcastFeed(userPodcasts) {
+	let podcasts = await retrievePodcastDocument();
+
+	let row = document.createElement('div');
+	row.setAttribute('class', 'row p-2');
+
+	let heading = document.createElement('h1');
+	heading.setAttribute('class', 'display-6 pt-lg-2 pt-xl-5 content-heading');
+	heading.innerText = "Podcast Feed"
+
+	let divider = document.createElement('hr');
+
+	row.append(heading, divider);
+
+	for (i = 0; i < userPodcasts.length; i++) {
+		podcasts.forEach(podcast => {
+			if (podcast.id.podcast == userPodcasts[i]) {
+				let postCard = buildPodcastCard(podcast);
+				postCard.setAttribute('class', 'col-12 col-sm-6 col-xl-6 col-xxl-4 p-3');
+				row.append(postCard);
+			}
+		})
+	}
+
+	document.getElementById('author-profile-podcast-feed').append(row);
+
 }
