@@ -8,8 +8,17 @@ body
 	font-weight: 350
 	overflow-x: hidden
 
+.container-fluid
+	padding: 0 5vw
+
+	@media screen and (min-width: 576px)
+		padding: 0 10vw
+
+	@media screen and (min-width: 1320px)
+		padding: 0 20vw
+
 .one-page-main
-	height: 77.5vh
+	min-height: 77.5vh
 
 .btn-primary
 	background-color: map-get($color-palette, 'primary')
@@ -27,6 +36,16 @@ body
 	&:hover
 		color: map-get($color-palette, 'primary')
 		text-decoration: underline
+
+.statistic-text
+	font-size: 1rem
+
+.user-profile-section-heading
+	font-size: 1.75rem
+
+.card-img-top
+	height: 15vh
+	object-fit: cover
 
 /* class styles */
 header
@@ -93,20 +112,6 @@ footer
 		&:hover
 			text-decoration-line: underline
 
-.index
-	.container-fluid
-		padding: 0 10vw
-
-		@media screen and (min-width: 1320px)
-			padding: 0 20vw
-
-.about
-	.container-fluid
-		padding: 0 10vw
-
-		@media screen and (min-width: 1320px)
-			padding: 0 20vw
-
 .discover
 	main
 		@media screen and (min-width: 576px)
@@ -114,3 +119,8 @@ footer
 
 	.content-heading
 		font-size: 1.75rem
+
+.upload
+	.form-textarea
+		height: 7.5rem !important
+		resize: none
