@@ -6,6 +6,20 @@ body {
   overflow-x: hidden;
 }
 
+.container-fluid {
+  padding: 0 5vw;
+}
+@media screen and (min-width: 576px) {
+  .container-fluid {
+    padding: 0 10vw;
+  }
+}
+@media screen and (min-width: 1320px) {
+  .container-fluid {
+    padding: 0 20vw;
+  }
+}
+
 .one-page-main {
   min-height: 77.5vh;
 }
@@ -27,6 +41,19 @@ body {
 .inline-link:hover {
   color: #133960;
   text-decoration: underline;
+}
+
+.statistic-text {
+  font-size: 1rem;
+}
+
+.user-profile-section-heading {
+  font-size: 1.75rem;
+}
+
+.card-img-top {
+  height: 15vh;
+  object-fit: cover;
 }
 
 /* class styles */
@@ -95,24 +122,6 @@ footer .footer-link {
 }
 footer .footer-link:hover {
   text-decoration-line: underline;
-}
-
-.index .container-fluid {
-  padding: 0 10vw;
-}
-@media screen and (min-width: 1320px) {
-  .index .container-fluid {
-    padding: 0 20vw;
-  }
-}
-
-.about .container-fluid {
-  padding: 0 10vw;
-}
-@media screen and (min-width: 1320px) {
-  .about .container-fluid {
-    padding: 0 20vw;
-  }
 }
 
 @media screen and (min-width: 576px) {
