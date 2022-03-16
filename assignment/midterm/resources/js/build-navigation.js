@@ -37,6 +37,17 @@ function buildNavigation() {
 		navigation.append(container);
 		navigation.append(buildNavigationButton('Register', 'register.html', 'me-5 py-3 px-4'));
 	}
+
+	let innerHeight = window.innerHeight;
+
+	let header = document.querySelector('header').offsetHeight;
+	console.log('Header height:' + header);
+	let footer = document.querySelector('footer').offsetHeight;
+	console.log('Footer height' + footer);
+
+	let main = document.querySelector('main');
+	let mainHeight = innerHeight - (header + footer) + 1;
+	main.setAttribute('style', `min-height: ${mainHeight}px`);
 }
 
 /**
