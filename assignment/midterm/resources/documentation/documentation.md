@@ -14,3 +14,9 @@ generated based on if the user is signed in, the status of which can be accessed
 script will render options to sign out and view account; if the user is not logged in, the script will render options to 
 sign in or register.  The footer is also identical across each page and contains static links to each navigable webpage 
 on the site.
+
+### [Home](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/index.html)
+
+The homepage is more of a landing page and serves as the initial view when a user visits the site. This view offers a 
+short placeholder description of the site and button on the left, as well as a simple illustration representing an 
+individual interactive with a mobile audio content platform.
