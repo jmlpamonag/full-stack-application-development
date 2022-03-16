@@ -53,10 +53,10 @@ async function buildContentSectionByCategory(category) {
 	let podcasts = await retrievePodcastDocument();
 
 	let row = document.createElement('div');
-	row.setAttribute('class', 'row p-2');
+	row.setAttribute('class', 'row p-3');
 
 	let heading = document.createElement('h1');
-	heading.setAttribute('class', 'display-6 pt-5 content-heading');
+	heading.setAttribute('class', 'display-6 pt-2 content-heading');
 
 	row.append(heading);
 
@@ -96,7 +96,7 @@ async function buildContentSectionByCategory(category) {
  */
 function buildPodcastCard(podcast) {
 	let container = document.createElement('div');
-	container.setAttribute('class', 'col-12 col-sm-6 col-xl-4 col-xxl-2 p-3');
+	container.setAttribute('class', 'col-12 col-md-6 col-xl-4');
 
 	let card = document.createElement('div');
 	card.setAttribute('class', 'card');
@@ -440,4 +440,122 @@ async function buildAuthorProfile(authorID) {
 
 	document.getElementById('author-profile-podcast-feed').append(row);
 
+}
+
+/**
+ * Build the podcast fields on a podcast page from the querystring.
+ * Potential TODO: Make this page inaccesible if there is no querystring.
+ *
+ * @param podcastID the ID of the podcast to be parsed
+ */
+async function buildPodcast(podcastID) {
+
+	// Build the appropriate JSON for the podcast with the querystring podcast ID
+	let podcastJSON =   await retrievePodcast(podcastID);
+
+	console.log(podcastJSON);
+
+	// Create the variables to hold the elements to be filled in
+	let podcastTitleElement = document.getElementById('podcast-title-heading');
+	let podcastAudioElement = document.getElementById('podcast-audio');
+	let podcastDescriptionElement = document.getElementById('podcast-description');
+
+	let podcastPublicationTitleElement = document.getElementById('title-of-research-document-value');
+	let podcastPublicationSourceElement = document.getElementById('source-of-research-document-value');
+	let podcastPublicationDoiElement = document.getElementById('doi-of-research-document-value');
+	let podcastPublicationDateElement = document.getElementById('date-of-research-document-value');
+	let podcastCategorizationCategoryElement = document.getElementById('category-of-research-document-value');
+	let podcastCategorizationKeywordsElement = document.getElementById('keywords-of-research-document-value');
+
+
+
+	// Assign the elements their data from the JSON
+	podcastTitleElement.innerHTML = `${podcastJSON.content.title}`;
+	/*
+	Depending on how the webserver is set up it might not allow
+	audio to be streamed because it might be set to
+	"Content-Type" of "text/html". This issue is server side but
+	you can validate that the data has been received and inserted
+	into the page by checking the HTML of the web page using the
+	developer tools of your browser
+	*/
+	// The audio element is currently styled inline
+	podcastAudioElement.innerHTML = `
+                <audio controls style="display: block; width: 100%">
+                    <source src="${podcastJSON.content.audio}" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>`;
+	podcastDescriptionElement.innerHTML = `${podcastJSON.content.description}`;
+
+	// Publication assignment
+	podcastPublicationTitleElement.innerHTML = `${podcastJSON.publication.title}`;
+	podcastPublicationSourceElement.innerHTML = `${podcastJSON.publication.source}`;
+	/*
+	The logic behind making this open in a new tab is that if
+	you're listening to a podcast you probably don't want your
+	podcast ended because you clicked a link. To avoid this it
+	will always open the DOI source in a new tab.
+	*/
+	podcastPublicationDoiElement.innerHTML = `<a href="https://doi.org/${podcastJSON.id.object}" target="_blank">${podcastJSON.id.object}</a>`;
+	podcastPublicationDateElement.innerHTML = `${podcastJSON.publication.date}`;
+
+	// Categorization assignment
+	podcastCategorizationCategoryElement.innerHTML = `${podcastJSON.categorization.category}`;
+	podcastCategorizationKeywordsElement.innerHTML = `${podcastJSON.categorization.keyword.toString().replaceAll(',', ', ')}`;
+
+	await buildAuthorMetadata(podcastJSON);
+}
+
+/**
+ * Build the author metadata from a provided JSON document.
+ *
+ * @param podcastJSON	the JSON document corresponding to the author for which metadata is being retrieved.
+ *
+ * @returns {Promise<void>}		append and write the innerHTML of author metadata elements.
+ */
+async function buildAuthorMetadata(podcastJSON) {
+	// Get the data for the author and the user to build metadata
+	let podcastAuthorID = podcastJSON.id.author;
+	let authorJSON =    await retrieveAuthor(podcastAuthorID);
+	console.log(authorJSON);
+	let userJSON =      await retrieveUserFromAuthorID(podcastAuthorID);
+	console.log(userJSON);
+
+	// Create the variables to hold the elements to be filled in
+	let authorProfilePictureElement = document.getElementById('author-profile-picture');
+	let authorNameElement = document.getElementById('author-name-value');
+	let authorOrganizationElement = document.getElementById('author-organization-value');
+	let authorTitleElement = document.getElementById('author-title-value');
+	let authorEmailElement = document.getElementById('author-email-value');
+
+	// Assign the values
+	authorProfilePictureElement.src = userJSON.profile.avatar;
+	authorNameElement.innerHTML = `${userJSON.name.first} ${userJSON.name.last}`;
+	authorOrganizationElement.innerHTML = `${authorJSON.institution.organization}`;
+	authorTitleElement.innerHTML = `${authorJSON.institution.title}`;
+	authorEmailElement.innerHTML = `<a href="mailto:${userJSON.account.email}">${userJSON.account.email}</a>`;
+
+}
+
+/**
+ * Forked from retrieveUser(). Because I want to know the name
+ * of the author I need to retrieve the information listed in
+ * the user's profile so I need a function to get the user from
+ * the authorID.
+ *
+ * @param authorID	the ID of the author who published a podcast
+ *
+ * @returns {Promise<JSON>}		the corresponding JSON object should it exist, or null if it does not.
+ */
+async function retrieveUserFromAuthorID(authorID) {
+	let document = await retrieveUserDocument();
+	let match = null;
+
+	document.forEach(object => {
+		if (object.id.author === authorID) {
+			match = object;
+		}
+	});
+
+	return match;
 }

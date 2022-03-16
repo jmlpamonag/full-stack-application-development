@@ -23,11 +23,11 @@ function buildNavigation() {
 		container.append(signOut);
 
 		navigation.append(container);
-		navigation.append(buildNavigationButton('Account', 'account.html', 'me-5 py-3 px-4'));
+		navigation.append(buildNavigationButton('Account', 'user.html', 'me-5 py-3 px-4'));
 	} else {
 		let container = buildNavigationContainer('ms-auto me-3');
 
-		let signIn = buildNavigationItem('Sign In', 'index.html');
+		let signIn = buildNavigationItem('Sign In', 'sign-in.html');
 		signIn.addEventListener('click', () => {
 			setAuthentication(true);
 		});
@@ -37,6 +37,17 @@ function buildNavigation() {
 		navigation.append(container);
 		navigation.append(buildNavigationButton('Register', 'register.html', 'me-5 py-3 px-4'));
 	}
+
+	let innerHeight = window.innerHeight;
+
+	let header = document.querySelector('header').offsetHeight;
+	console.log('Header height:' + header);
+	let footer = document.querySelector('footer').offsetHeight;
+	console.log('Footer height' + footer);
+
+	let main = document.querySelector('main');
+	let mainHeight = innerHeight - (header + footer) + 1;
+	main.setAttribute('style', `min-height: ${mainHeight}px`);
 }
 
 /**
