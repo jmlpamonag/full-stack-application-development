@@ -62,6 +62,14 @@ which will automatically link to the source of the document. Then after filling 
 program uses the author's ID in the podcast JSON to grab the author and user JSONs to fill in the metadata for the 
 author.
 
+### [User](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/user.html)
+
+This page provides an overview of the various components of a distinct user profile - the avatar, name, and statistical 
+attributes in the top row are retrieved via the user document, and the curated author and podcast content is retrieved 
+from the user document and cross-referenced with the respective documents. This data is built into Bootstrap card 
+elements for ease in display. At this point, the user unique identifier is retrieved from a localStorage key that is
+created in the authentication process rather than with a query string to prevent unauthorized access.
+
 ### Forms: Registration, Authentication, Author Verification, and Podcast Upload
 
 Each form is static and built with a modern, responsive approach using Bootstrap, and contains one field per 
