@@ -61,3 +61,9 @@ metadata, and categorization metadata. One extra feature added here was simply l
 which will automatically link to the source of the document. Then after filling all of the relevant podcast metadata the 
 program uses the author's ID in the podcast JSON to grab the author and user JSONs to fill in the metadata for the 
 author.
+
+### Forms: Registration, Authentication, Author Verification, and Podcast Upload
+
+Each form is static and built with a modern, responsive approach using Bootstrap, and contains one field per 
+user-provided data attribute as seen in the user, author, or podcast documents. A number of fields will be generated - 
+e.g., the unique identifier fields - server-side during processing of a corresponding form.
