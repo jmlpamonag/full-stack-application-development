@@ -49,7 +49,7 @@ containing [published podcasts](https://jsonblob.com/api/950251742357110784) are
 card contains the podcast title, author id, and button that redirects to the podcast detail page, which shows more
 details about that particular podcast.
 
-### [Podcast Page](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html?id=p00000002)
+### [Podcast](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html?id=p00000002)
 
 The link provided is to a podcast page with filled in data. 
 [To view the blank template you can click here.](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html)
