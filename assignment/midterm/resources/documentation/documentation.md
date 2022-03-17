@@ -32,3 +32,9 @@ contains the podcast title and links to the corresponding author and podcast det
 from JSON documents containing [registered authors](https://jsonblob.com/950254564695883776) and 
 [published podcasts](https://jsonblob.com/950251742357110784). This view could be extended to display and organize 
 content by the filter option values, distinct user curation, date of release, or popularity.
+
+### [Podcast Page](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html?id=p00000002)
+
+The link provided is to a podcast page with filled in data. [To view the blank template you can click here.](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html)
+
+This is the page where a podcast can be listened to as well as showing the metadata of the podcast, the author (of the audio), and the publishing/categorization of said podcast. Upon page load the page runs a buildPodcast() function that accepts a query string of a podcast ID and adds the title, audio element, description, publishing metadata, and categorization metadata. One extra feature added here was simply linking the DOI to doi.org/(DOI here) which will automatically link to the source of the document. Then after filling all of the relevant podcast metadata the program uses the author's ID in the podcast JSON to grab the author and user JSONs to fill in the metadata for the author.
