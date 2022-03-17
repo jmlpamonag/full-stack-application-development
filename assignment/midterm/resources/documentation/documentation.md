@@ -21,6 +21,10 @@ The homepage is more of a landing page and serves as the initial view when a use
 short placeholder description of the site and button on the left, as well as a simple illustration representing an 
 individual interactive with a mobile audio content platform.
 
+### [About](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/about.html)
+The about page is the section on the site that provides a breif summary of what PodScholar is and its purpose. 
+This view also shows information about the site's features and what it can deliver.
+
 ### [Discover](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/discover.html)
 
 This is the starting point for finding the majority of the content on the platform. To the left is a sticky menu with
@@ -32,3 +36,7 @@ contains the podcast title and links to the corresponding author and podcast det
 from JSON documents containing [registered authors](https://jsonblob.com/950254564695883776) and 
 [published podcasts](https://jsonblob.com/950251742357110784). This view could be extended to display and organize 
 content by the filter option values, distinct user curation, date of release, or popularity.
+
+### [Author](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/author.html?id=a00000001)
+
+This is the page that shows the author's information and podcast feed. In the left is the author section that contains the image of the author, author details, and a short description of that author, which are all pulled directly from the JSON documents containing [registered authors](https://jsonblob.com/950254564695883776) and [users]https://jsonblob.com/api/jsonBlob/950253428945469440 using the author id that was parsed from the query string on the url. On the right is the author podcasts section or the podcast feed wherein podcasts for a particular author, whhich are pulled from the JSON document containing [published podcasts](https://jsonblob.com/api/950251742357110784) are displayed using Boostrap Cards. Each card contains the podcast title, author id, and button that redirects to the podcast detail page, which shows more details about that particular podcast.
