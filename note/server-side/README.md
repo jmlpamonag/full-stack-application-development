@@ -34,3 +34,10 @@ Routing can be further optimised by chaining handlers for a route path using `ap
 specified at a single location, creating modular routes is helpful in reducing redundancy and typos.
 
 A sample Express application illustrating optimised routing can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/routing).
+
+### External Routing
+
+The `express.Router` class can be used to create modular, mountable route handler. A Router instance is a complete 
+middleware and routing system; for this reason, it is often referred to as a 'mini-app'.
+
+A sample Express application illustrating external routing can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/routing-external).
