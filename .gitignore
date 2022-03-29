@@ -1,6 +1,20 @@
-# intellij, rubymine, pycharm, android studio, and webstorm general
-/.idea/
-*.iws
+# .gitignore to include non-project-specific ignorable files in jetbrains repositories
+#
+# last updated on 3-26-2022
 
-# intellij-specific
-/out/
+# global - directory-based project configuration
+.idea/
+
+# global - file-based project configuration
+*.iws
+*.iml
+*.ipr
+
+# intellij - compilation
+out/
+
+# webstorm - project-specific node modules
+node_modules/
+
+# webstorm - automatically generated via package.json
+package-lock.json
