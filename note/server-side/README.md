@@ -20,3 +20,17 @@ specifies the root directory from which to serve the static assets. The `[option
 and `setHeaders`, which allows a function to be set for specifying custom headers on static file requests.
 
 A sample Express application handling static files can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/static-file).
+
+## Routing
+
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI 
+(or path) and a specific HTTP request method (GET, POST, etc.). Each route can have one or more handler functions, 
+which are executed when the route is matched. Route definition utilises the following structure: 
+`app.<method>(<path>, <handler>)`, where `app` is the instance of Express, `<method>` is an HTTP request method, 
+`<path>` is a path on the server, and `<handler>` is the callback function executed when the route is matched. Express 
+implements a function to address every HTTP verb. 
+
+Routing can be further optimised by chaining handlers for a route path using `app.route()`. Because the path is
+specified at a single location, creating modular routes is helpful in reducing redundancy and typos.
+
+A sample Express application illustrating optimised routing can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/routing).
