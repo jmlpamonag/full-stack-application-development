@@ -53,3 +53,15 @@ way. Common uses include categories, usernames, and post titles.
 
 Express contains functions that match all HTTP verbs in a catch-all approach: `app.use` and `app.all`. An important 
 note: routes are processed first-in, first-out.
+
+## Express Middleware
+
+Express is a routing and middleware web framework that has minimal functionality in itself. An Express application is
+essentially a series of middleware function calls. Middleware functions are functions that have access to the request
+object, `req`, the response object, `res`, and the next middleware function in the application request-response cycle.
+The next middleware function is commonly denoted by a variable named `next`.
+
+Middleware functions can perform the following tasks: execute any code, make changes to the request and response
+objects, end the request-response cycle, and call the next middleware function in the stack. If the current middleware
+function does not end the request-response cycle, it must call `next()` to pass control to the next middleware
+function - if it does not, the request will be left hanging.
