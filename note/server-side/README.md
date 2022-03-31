@@ -72,3 +72,8 @@ A sample Express application illustrating various approaches to middleware can b
 
 The next function can be utilised to chain multiple middleware functions. Consider them a filter or the different
 stages of a production line.
+
+### Routing-level Middleware
+
+Middleware functions be defined as part of a particular route. This approach can also be combined with the chaining 
+approach.
