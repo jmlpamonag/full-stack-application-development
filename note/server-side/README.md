@@ -77,3 +77,9 @@ stages of a production line.
 
 Middleware functions be defined as part of a particular route. This approach can also be combined with the chaining 
 approach.
+
+### Other Middleware
+
+Express includes the following built-in middleware: `express.static` serves static assets such as HTML files, images, 
+etc.; `express.json` parses incoming requests with JSON payloads; and `express.urlencoded` parses incoming requests with 
+URL-encoded payloads. Express also supports third-party middleware.
