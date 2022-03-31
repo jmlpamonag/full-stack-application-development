@@ -65,3 +65,10 @@ Middleware functions can perform the following tasks: execute any code, make cha
 objects, end the request-response cycle, and call the next middleware function in the stack. If the current middleware
 function does not end the request-response cycle, it must call `next()` to pass control to the next middleware
 function - if it does not, the request will be left hanging.
+
+A sample Express application illustrating various approaches to middleware can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/middleware).
+
+### Chaining Multiple Middleware Functions
+
+The next function can be utilised to chain multiple middleware functions. Consider them a filter or the different
+stages of a production line.
