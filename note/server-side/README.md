@@ -41,3 +41,15 @@ The `express.Router` class can be used to create modular, mountable route handle
 middleware and routing system; for this reason, it is often referred to as a 'mini-app'.
 
 A sample Express application illustrating external routing can be found [here](https://github.com/muzzarellimj/full-stack-application-development/tree/main/note/server-side/routing-external).
+
+## Understanding the Request Object
+
+The `request` object contains a number of parameters, including: query string parameters, exposed as the `query` 
+property; and URL parameters, exposed as the `params` property. To access parameter values within routing, use the 
+`:param` format within the route. URL parameters can be used to capture variable URL paths and treat them in the same 
+way. Common uses include categories, usernames, and post titles.
+
+## Catch-All Functions
+
+Express contains functions that match all HTTP verbs in a catch-all approach: `app.use` and `app.all`. An important 
+note: routes are processed first-in, first-out.
