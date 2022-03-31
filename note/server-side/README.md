@@ -83,3 +83,9 @@ approach.
 Express includes the following built-in middleware: `express.static` serves static assets such as HTML files, images, 
 etc.; `express.json` parses incoming requests with JSON payloads; and `express.urlencoded` parses incoming requests with 
 URL-encoded payloads. Express also supports third-party middleware.
+
+## Handling File Upload
+
+Multer is a Node.js middleware built to handle multipart and form data and is primarily used for uploading files. Multer 
+adds a `body` object and a `file` (or files) object to the `request` object. The `body` object contains the values of 
+the text fields of a form, and the `file`(s) object contains the file(s) uploaded via a form.
