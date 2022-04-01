@@ -9,17 +9,17 @@ const fs = require('fs');
 const port = 3000;
 
 app.post('/api/jsonBlob', (request, response) => {
-    // fill in post request here
+    // fill in post request here - responsibility: michael
 });
 
 app.get('/api/jsonBlob/:blobId', (request, response) => {
-    // fill in get request here
+    // fill in get request here - responsibility: mj
 });
 
 app.put('/api/jsonBlob/:blobId', (request, response) => {
-    // fill in put request here
+    // fill in put request here - responsibility: robert
 });
 
 app.delete('/api/jsonBlob/:blobId', (request, response) => {
-    // fill in delete request here
+    // fill in delete request here - responsibility: michael
 });
