@@ -39,10 +39,39 @@ content by the filter option values, distinct user curation, date of release, or
 
 ### [Author](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/author.html?id=a00000001)
 
-This is the page that shows the author's information and podcast feed. In the left is the author section that contains the image of the author, author details, and a short description of that author, which are all pulled directly from the JSON documents containing [registered authors](https://jsonblob.com/950254564695883776) and [users]https://jsonblob.com/api/jsonBlob/950253428945469440 using the author id that was parsed from the query string on the url. On the right is the author podcasts section or the podcast feed wherein podcasts for a particular author, whhich are pulled from the JSON document containing [published podcasts](https://jsonblob.com/api/950251742357110784) are displayed using Boostrap Cards. Each card contains the podcast title, author id, and button that redirects to the podcast detail page, which shows more details about that particular podcast.
+This is the page that shows the author's information and podcast feed. In the left is the author section that contains
+the image of the author, author details, and a short description of that author, which are all pulled directly from the
+JSON documents containing [registered authors](https://jsonblob.com/950254564695883776)
+and [users](https://jsonblob.com/api/jsonBlob/950253428945469440) using the author id that was parsed from the query
+string on the url. On the right is the author podcasts section or the podcast feed wherein podcasts for a particular
+author, whhich are pulled from the JSON document
+containing [published podcasts](https://jsonblob.com/api/950251742357110784) are displayed using Boostrap Cards. Each
+card contains the podcast title, author id, and button that redirects to the podcast detail page, which shows more
+details about that particular podcast.
 
-### [Podcast Page](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html?id=p00000002)
+### [Podcast](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html?id=p00000002)
 
-The link provided is to a podcast page with filled in data. [To view the blank template you can click here.](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html)
+The link provided is to a podcast page with filled in data. 
+[To view the blank template you can click here.](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/podcast.html)
 
-This is the page where a podcast can be listened to as well as showing the metadata of the podcast, the author (of the audio), and the publishing/categorization of said podcast. Upon page load the page runs a buildPodcast() function that accepts a query string of a podcast ID and adds the title, audio element, description, publishing metadata, and categorization metadata. One extra feature added here was simply linking the DOI to doi.org/(DOI here) which will automatically link to the source of the document. Then after filling all of the relevant podcast metadata the program uses the author's ID in the podcast JSON to grab the author and user JSONs to fill in the metadata for the author.
+This is the page where a podcast can be listened to as well as showing the metadata of the podcast, the author 
+(of the audio), and the publishing/categorization of said podcast. Upon page load the page runs a buildPodcast() 
+function that accepts a query string of a podcast ID and adds the title, audio element, description, publishing 
+metadata, and categorization metadata. One extra feature added here was simply linking the DOI to doi.org/(DOI here) 
+which will automatically link to the source of the document. Then after filling all of the relevant podcast metadata the 
+program uses the author's ID in the podcast JSON to grab the author and user JSONs to fill in the metadata for the 
+author.
+
+### [User](https://muzzarellimj.github.io/full-stack-application-development/assignment/midterm/user.html)
+
+This page provides an overview of the various components of a distinct user profile - the avatar, name, and statistical 
+attributes in the top row are retrieved via the user document, and the curated author and podcast content is retrieved 
+from the user document and cross-referenced with the respective documents. This data is built into Bootstrap card 
+elements for ease in display. At this point, the user unique identifier is retrieved from a localStorage key that is
+created in the authentication process rather than with a query string to prevent unauthorized access.
+
+### Forms: Registration, Authentication, Author Verification, and Podcast Upload
+
+Each form is static and built with a modern, responsive approach using Bootstrap, and contains one field per 
+user-provided data attribute as seen in the user, author, or podcast documents. A number of fields will be generated - 
+e.g., the unique identifier fields - server-side during processing of a corresponding form.
