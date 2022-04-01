@@ -2,8 +2,9 @@
 	"name": "assignment-5",
 	"version": "0.0.1",
 	"description": "Assignment 5: JSONBlob replica.",
-	"main": "index.js",
+	"main": "src/ndex.js",
 	"scripts": {
+		"start": "node src/index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
