@@ -17,19 +17,19 @@ app.use(express.json({
     }
 }));
 
-app.post('/api/jsonBlob', (request, response) => {
+app.post('/api', (request, response) => {
     // fill in post request here - responsibility: michael
 });
 
-app.get('/api/jsonBlob/:blobId', (request, response) => {
+app.get('/api/:id', (request, response) => {
     // fill in get request here - responsibility: mj
 });
 
-app.put('/api/jsonBlob/:blobId', (request, response) => {
+app.put('/api/:id', (request, response) => {
     // fill in put request here - responsibility: robert
 });
 
-app.delete('/api/jsonBlob/:blobId', (request, response) => {
+app.delete('/api/:id', (request, response) => {
     // fill in delete request here - responsibility: michael
 });
 
