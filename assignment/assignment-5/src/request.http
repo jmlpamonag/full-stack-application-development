@@ -1,0 +1,33 @@
+# POST - try to create a new JSON document with invalid syntax
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+    this invalid string should result in an HTTP response of 406 - not accapetable
+}
+
+###
+
+# POST - create a new JSON document
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+    "foo": "bar"
+}
+
+###
+
+# DELETE - try to delete a JSON document that does not exist
+DELETE http://localhost:3000/api/0
+Content-Type: application/json
+
+{}
+
+###
+
+# DELETE - delete an existing JSON document - NOTE: <generated-uuid> must be altered to match an existing document
+DELETE http://localhost:3000/api/<generated-uuid>
+Content-Type: application/json
+
+{}
