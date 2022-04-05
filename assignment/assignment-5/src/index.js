@@ -33,3 +33,7 @@ app.put('/api/jsonBlob/:blobId', (request, response) => {
 app.delete('/api/jsonBlob/:blobId', (request, response) => {
     // fill in delete request here - responsibility: michael
 });
+
+app.listen(port, () => {
+    console.log(`application is listening on port ${port}.`);
+});
