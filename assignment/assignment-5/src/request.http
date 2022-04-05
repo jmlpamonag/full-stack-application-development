@@ -41,3 +41,16 @@ DELETE http://localhost:3000/api/<generated-uuid>
 Content-Type: application/json
 
 {}
+
+###
+
+# GET - try to retrieve a JSON document that does not exist 
+GET http://localhost:3000/api/0
+Content-Type: application/json
+
+###
+# GEt - try to retrieve an existing JSON document - NOTE: <generated-uuid> must be altered to match an existing document
+GET http://localhost:3000/api/<generated-uuid>
+Content-Type: application/json
+
+{}

@@ -36,7 +36,21 @@ app.post('/api', (request, response) => {
 });
 
 app.get('/api/:id', (request, response) => {
-    // fill in get request here - responsibility: mj
+    let file = `${publicDirectory}/${request.params.id}.json`;
+
+    fs.access(file, fs.constants.F_OK, (error) => {
+        if(error) {
+            response.status(404).send('A JSON document with the provided unique identifier cannot be found - please try again!');
+            return;
+        } else {
+            fs.readFile(file, (error, data) => {
+                if (error) {
+                    response.status(500).send(`An error occurred while deleting document ${request.params.id} - please try again!`);
+                }
+                response.send(data);
+              });
+        }
+    });
 });
 
 app.put('/api/:id', (request, response) => {
