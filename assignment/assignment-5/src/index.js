@@ -27,10 +27,11 @@ app.post('/api', (request, response) => {
     fs.writeFile(`${publicDirectory}/${id}.json`, JSON.stringify(request.body, null, 4), (error) => {
         if (error) {
             response.status(500).send('An error was caught while writing the JSON file - please try again!');
-        }
 
-        response.location(`localhost:3000/api/${id}`);
-        response.status(201).send('A JSON document has successfully been generated and stored.')
+        } else {
+            response.location(`localhost:3000/api/${id}`);
+            response.status(201).send('A JSON document has successfully been generated and stored.')
+        }
     });
 });
 
@@ -43,7 +44,23 @@ app.put('/api/:id', (request, response) => {
 });
 
 app.delete('/api/:id', (request, response) => {
-    // fill in delete request here - responsibility: michael
+    let file = `${publicDirectory}/${request.params.id}.json`;
+
+    fs.access(file, fs.constants.F_OK, (error) => {
+        if (error) {
+            response.status(404).send('A JSON document with the provided unique identifier cannot be found - please try again!');
+
+        } else {
+            fs.rm(file, (error) => {
+                if (error) {
+                    response.status(500).send(`An error occurred while deleting document ${request.params.id} - please try again!`);
+
+                } else {
+                    response.status(200).send(`Document ${request.params.id} has been deleted successfully.`);
+                }
+            });
+        }
+    });
 });
 
 app.listen(port, () => {
