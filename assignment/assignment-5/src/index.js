@@ -8,6 +8,16 @@ const fs = require('fs');
 
 const port = 3000;
 
+app.use(express.json({
+    verify: (request, response, buffer, encoding) => {
+        try {
+            JSON.parse(encoding);
+        } catch (error) {
+            response.status(406).send('JSON could not be successfully validated - please try again!');
+        }
+    }
+}));
+
 app.post('/api/jsonBlob', (request, response) => {
     // fill in post request here - responsibility: michael
 });
