@@ -40,7 +40,51 @@ app.get('/api/:id', (request, response) => {
 });
 
 app.put('/api/:id', (request, response) => {
-    // fill in put request here - responsibility: robert
+    
+    // check to see if the ID of the JSON exists in the public folder
+    let id = request.params.id;
+    let fileExists = fs.access(`${publicDirectory}/${id}.json`, fs.constants.F_OK, (error) => {
+
+        // if the <id>.json does not exist then return an HTTP 404 per JSON Blob API documentation
+        if(error) {
+
+            response.status(404).send(`The provided ID could not be found. Please verify that you have the correct ID of the JSON document and try again. The ID received was: ${id}`);
+
+        }
+        // if the <id>.json does exist then return an HTTP 200 with the body of the response being the JSON received
+        else {
+            // overwrite the existing file with the new body of the request
+            fs.writeFile(`${publicDirectory}/${id}.json`, JSON.stringify(request.body, null, 4), (error) => {
+
+                // catch any errors that may occur while writing
+                if (error) {
+
+                    response.status(500).send('An error was caught while writing the JSON file - please try again!');
+        
+                } else {
+                    // read the file so that it may be returned in the body of the HTTP 200
+                    fs.readFile(`${publicDirectory}/${id}.json`, (error, data) => {
+
+                        // catch any errors that may occur while writing
+                        if(error) {
+
+                            response.status(500).send('An error was caught while reading the JSON file - the file was updated on the server.');
+
+                        }
+                        // send the response back if there were no issues
+                        else {
+                            response.status(200).send(`${data}`);
+                        }
+
+                    });
+                    
+                }
+            });
+
+        }
+
+    });
+
 });
 
 app.delete('/api/:id', (request, response) => {
