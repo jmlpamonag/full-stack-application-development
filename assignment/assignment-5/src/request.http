@@ -18,6 +18,16 @@ Content-Type: application/json
 
 ###
 
+# PUT - update an existing JSON document
+PUT http://localhost:3000/api/<generated-uuid>
+Content-Type: application/json
+
+{
+    "foo2": "bar2"
+}
+
+###
+
 # DELETE - try to delete a JSON document that does not exist
 DELETE http://localhost:3000/api/0
 Content-Type: application/json
