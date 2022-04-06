@@ -57,7 +57,7 @@ app.put('/api/:id', (request, response) => {
     
     // check to see if the ID of the JSON exists in the public folder
     let id = request.params.id;
-    let fileExists = fs.access(`${publicDirectory}/${id}.json`, fs.constants.F_OK, (error) => {
+    fs.access(`${publicDirectory}/${id}.json`, fs.constants.F_OK, (error) => {
 
         // if the <id>.json does not exist then return an HTTP 404 per JSON Blob API documentation
         if(error) {
@@ -75,7 +75,8 @@ app.put('/api/:id', (request, response) => {
 
                     response.status(500).send('An error was caught while writing the JSON file - please try again!');
         
-                } else {
+                } 
+                else {
                     // read the file so that it may be returned in the body of the HTTP 200
                     fs.readFile(`${publicDirectory}/${id}.json`, (error, data) => {
 
